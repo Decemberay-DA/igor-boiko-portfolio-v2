@@ -1,5 +1,24 @@
 # igor-boiko-portfolio-v2
 
+## Tech stack
+
+based on T3 + Fiber + Three
+
+## TODO
+
+- [x] Install T3 template (https://create.t3.gg/)
+- [ ] Make it deploy (vercel)
+- [ ] Complete some git-based react intro course ()
+- [ ] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
+- [ ] integrate r3n in to T3
+
+- Fiber guide - https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene
+- have a cool boid motion of stars made in ESC engine
+
+---
+
+some unrelated stuff
+
 # Create T3 Apppppp
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
