@@ -8,8 +8,9 @@ based on T3 + Fiber + Three
 
 - [x] Install T3 template (https://create.t3.gg/)
 - [x] Make it deploy (vercel)
-- [ ] create dev branch
 - [ ] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
+    - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
+- [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it
 - [ ] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
 - [ ] integrate r3n in to T3
 
