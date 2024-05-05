@@ -56,33 +56,38 @@ export const vizData: IVizData[] = [
 	},
 ];
 
-export function shuffleArray<T>(array: T[]) {
-	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i] as any, array[j] as any] = [array[j] as any, array[i] as any];
-	}
-	return array as T[];
+/**
+ * rotates array by random amount
+ */
+function rotateArray<T>(array: T[]): T[] {
+	const randomAmount = Math.floor(Math.random() * array.length);
+	return array.slice(randomAmount, array.length).concat(array.slice(0, randomAmount));
 }
 
-export const loremIpsunWords = ["lorem", "solo", "ipsum", "dolor", "sit", "amet", "do"];
-export const createloremIpsumSentence = (wordCount: number) => {
+const loremIpsunWords = ["lorem", "solo", "ipsum", "dolor", "sit", "amet", "do"];
+const createloremIpsumSentence = (wordCount: number) => {
 	return loremIpsunWords.slice(0, wordCount).join(" ");
 };
-export const breacSentenceToWords = (sentence: string) => {
+const breacSentenceToWords = (sentence: string) => {
 	return sentence.split(" ");
 };
-const getRandomChipWords = (wordCount: number) =>
-	pipe(createloremIpsumSentence(wordCount), breacSentenceToWords, shuffleArray);
 
-export const createIVizData = (imageURI: string) => {
+const getRandomChipWords = (wordCount: number) =>
+	pipe(
+		createloremIpsumSentence(wordCount), //
+		breacSentenceToWords,
+		rotateArray,
+	);
+
+const createIVizData = (imageURI: string) => {
 	return {
 		imageURL: imageURI,
 		category: createloremIpsumSentence(3),
-		tags: shuffleArray(loremIpsunWords.slice(0, 3)),
+		tags: rotateArray(loremIpsunWords.slice(0, 3)),
 	};
 };
 
-export const wrapStringInPipe = (str: string) => "| " + str + " |";
+const wrapStringInPipe = (str: string) => "| " + str + " |";
 
 export const createTagChip = (tag: string) => {
 	return (
@@ -115,7 +120,7 @@ export const createVizDataList = () => {
 		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
 			{pipe(
 				vizData,
-				shuffleArray,
+				rotateArray,
 				array.map((a) => ({ ...a, category: wrapStringInPipe(a.category) })),
 				(a) => a.map(createVizDataCard),
 				// (a) => (
