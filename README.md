@@ -8,7 +8,7 @@ based on T3 + Fiber + Three
 
 - [x] Install T3 template (https://create.t3.gg/)
 - [ ] Make it deploy (vercel)
-- [ ] Complete some git-based react intro course ()
+- [ ] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
 - [ ] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
 - [ ] integrate r3n in to T3
 
