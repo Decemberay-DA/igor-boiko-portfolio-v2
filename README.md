@@ -19,7 +19,7 @@ based on T3 + Fiber + Three
 
 ---
 
-some unrelated stuff
+some unrelated stuff idk how is it got here
 
 # Create T3 Apppppp
 
