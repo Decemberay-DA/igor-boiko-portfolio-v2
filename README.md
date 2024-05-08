@@ -10,9 +10,9 @@ based on T3 + Fiber + Three
 - [x] Make it deploy (vercel)
 - [ ] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
     - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
-- [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it
 - [ ] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
 - [ ] integrate r3n in to T3
+- [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it
 
 - Fiber guide - https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene
 - have a cool boid motion of stars made in ESC engine
