@@ -65,36 +65,28 @@ export const createTagRow = (tags: string[]) => {
 
 // three scene stuff ========-====-====-====-============
 
-import tunnel from "tunnel-rat"
-export const r3f = tunnel()
-
 // loading scene on client side
 import dynamic from "next/dynamic"
 const Three = dynamic(() => import("./Three").then((m) => m.Three), { ssr: false })
+const CommonBG = dynamic(() => import("./commonBG").then((m) => m.CommonBG), { ssr: false })
 
-import { OrbitControls, PerspectiveCamera, View as ViewImpl } from "@react-three/drei"
-import { Suspense } from "react"
+import { View as ViewImpl } from "@react-three/drei"
 
 export const createVizDataCard = (props: VizCardProp) => {
 	const imageContainer = () => <img src={props.imageURL} alt="imageContainer" className="w-full h-auto" />
-	const fiberContainer = () => <img src={props.imageURL} alt="fiberContainer" className="w-[50%] h-auto" />
+	// const fiberContainer = () => <img src={props.imageURL} alt="fiberContainer" className="w-[50%] h-auto" />
 	// some problems with loading it on server side for some reason => fix
-	// const fiberContainer = () => {
-	// 	return (
-	// 		<Three>
-	// 			{/* <Suspense fallback={<div>Loading...</div>}> */}
-	// 			<ViewImpl>
-	// 				<color attach="background" args={["lightpink"]} />
-	// 				<ambientLight />
-	// 				<pointLight position={[20, 30, 10]} intensity={3} decay={0.2} />
-	// 				<pointLight position={[-10, -10, -10]} color="blue" decay={0.2} />
-	// 				<PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
-	// 				<OrbitControls />
-	// 			</ViewImpl>
-	// 			{/* </Suspense> */}
-	// 		</Three>
-	// 	)
-	// }
+	const fiberContainer = () => {
+		return (
+			<Three>
+				{/* <Suspense fallback={<div>Loading...</div>}> */}
+				<ViewImpl>
+					<CommonBG />
+				</ViewImpl>
+				{/* </Suspense> */}
+			</Three>
+		)
+	}
 
 	const isUsingFiberScene = Math.random() > 0.5
 	const banana = isUsingFiberScene ? fiberContainer : imageContainer
