@@ -1,126 +1,118 @@
-import { array } from "fp-ts";
-import { pipe } from "fp-ts/lib/function";
+import { array } from "fp-ts"
+import { pipe } from "fp-ts/lib/function"
 
-export type IVizData = {
-	imageURL: string;
-	category: string;
-	tags: string[];
-};
-
-export const vizData: IVizData[] = [
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/57e5d74a4f57af14f1dc8460962e33791c3ad6e04e50744172297cd69745c5_640.jpg",
-		category: "Analytics",
-		tags: ["data", "chart", "analytics", "visualization"],
-	},
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/57e5d74a4f57af14f1dc8460962e33791c3ad6e04e50744172297cd69745c5_640.jpg",
-		category: "History",
-		tags: ["history", "data", "trends"],
-	},
-	{
-		imageURL: "https://randompicturegenerator.com/img/picture-generator/gummibarchen-318362_640.jpg",
-		category: "Market",
-		tags: ["forecast", "market", "future", "trends"],
-	},
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/54e0d2474a51ac14f1dc8460962e33791c3ad6e04e5074417c2e7dd1914bc4_640.jpg",
-		category: "Economics",
-		tags: ["economics", "comparison", "indicators"],
-	},
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/54e0d2474a51ac14f1dc8460962e33791c3ad6e04e5074417c2e7dd1914bc4_640.jpg",
-		category: "Sales",
-		tags: ["sales", "yearly", "bar chart"],
-	},
-	{
-		imageURL: "https://randompicturegenerator.com/img/picture-generator/gummibarchen-318362_640.jpg",
-		category: "Market",
-		tags: ["forecast", "market", "future", "trends"],
-	},
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/54e0d2474a51ac14f1dc8460962e33791c3ad6e04e5074417c2e7dd1914bc4_640.jpg",
-		category: "Economics",
-		tags: ["economics", "comparison", "indicators"],
-	},
-	{
-		imageURL:
-			"https://randompicturegenerator.com/img/picture-generator/54e0d2474a51ac14f1dc8460962e33791c3ad6e04e5074417c2e7dd1914bc4_640.jpg",
-		category: "Sales",
-		tags: ["sales", "yearly", "bar chart"],
-	},
-];
-
-/**
- * rotates array by random amount
- */
-function rotateArray<T>(array: T[]): T[] {
-	const randomAmount = Math.floor(Math.random() * array.length);
-	return array.slice(randomAmount, array.length).concat(array.slice(0, randomAmount));
+export type VizCardProp = {
+	imageURL: string
+	category: string
+	tags: string[]
 }
 
-const loremIpsunWords = ["lorem", "solo", "ipsum", "dolor", "sit", "amet", "do"];
-const createloremIpsumSentence = (wordCount: number) => {
-	return loremIpsunWords.slice(0, wordCount).join(" ");
-};
-const breacSentenceToWords = (sentence: string) => {
-	return sentence.split(" ");
-};
+const categories = [
+	"Analytics",
+	"History",
+	"Market",
+	"Economics",
+	"Sales",
+	"Chart",
+	"Forecast",
+	"Comparison",
+	"Indicators",
+]
+const imageExamples = ["https://via.placeholder.com/150"]
+const tagOptions = [
+	["data", "chart", "analytics", "visualization"],
+	["history", "data", "trends"],
+	["forecast", "market", "future", "trends"],
+	["economics", "comparison", "indicators"],
+	["sales", "yearly", "bar chart"],
+	["charts", "visualization", "data"],
+	["forecast", "market", "future", "trends"],
+	["comparison", "indicators", "data", "chart"],
+	["indicators", "data", "chart", "trends"],
+	["data", "chart", "analytics", "visualization"],
+]
 
-const getRandomChipWords = (wordCount: number) =>
-	pipe(
-		createloremIpsumSentence(wordCount), //
-		breacSentenceToWords,
-		rotateArray,
-	);
+function getRandomItem<T>(items: T[]): T {
+	return items[Math.floor(Math.random() * items.length)]!
+}
+const randomTags = (): string[] => getRandomItem(tagOptions)
+const randomCategory = (): string => getRandomItem(categories)
+const randomImageURL = (): string => getRandomItem(imageExamples)
 
-const createIVizData = (imageURI: string) => {
-	return {
-		imageURL: imageURI,
-		category: createloremIpsumSentence(3),
-		tags: rotateArray(loremIpsunWords.slice(0, 3)),
-	};
-};
+function generateRandomVizData(): VizCardProp[] {
+	return Array.from({ length: 24 }, () => ({
+		imageURL: randomImageURL(),
+		category: randomCategory(),
+		tags: randomTags(),
+	}))
+}
 
-const wrapStringInPipe = (str: string) => "| " + str + " |";
+const vizData: VizCardProp[] = generateRandomVizData()
+
+const wrapStringInPipe = (str: string) => "| " + str + " |"
 
 export const createTagChip = (tag: string) => {
 	return (
 		<div className="inline-block bg-GACTIVERIGHT text-white rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
 			{tag}
 		</div>
-	);
-};
+	)
+}
 
 export const createTagRow = (tags: string[]) => {
-	return <div className="flex flex-wrap gap-2">{tags.map((tag) => createTagChip(tag))}</div>;
-};
+	return <div className="flex flex-wrap gap-2">{tags.map((tag) => createTagChip(tag))}</div>
+}
 
-export const createVizDataCard = (data: IVizData) => {
+// three scene stuff ========-====-====-====-============
+
+import tunnel from "tunnel-rat"
+export const r3f = tunnel()
+
+// loading scene on client side
+import dynamic from "next/dynamic"
+const Three = dynamic(() => import("./Three").then((m) => m.Three), { ssr: false })
+
+import { OrbitControls, PerspectiveCamera, View as ViewImpl } from "@react-three/drei"
+import { Suspense } from "react"
+
+export const createVizDataCard = (props: VizCardProp) => {
+	const imageContainer = () => <img src={props.imageURL} alt="imageContainer" className="w-full h-auto" />
+	const fiberContainer = () => <img src={props.imageURL} alt="fiberContainer" className="w-[50%] h-auto" />
+	// some problems with loading it on server side for some reason => fix
+	// const fiberContainer = () => {
+	// 	return (
+	// 		<Three>
+	// 			{/* <Suspense fallback={<div>Loading...</div>}> */}
+	// 			<ViewImpl>
+	// 				<color attach="background" args={["lightpink"]} />
+	// 				<ambientLight />
+	// 				<pointLight position={[20, 30, 10]} intensity={3} decay={0.2} />
+	// 				<pointLight position={[-10, -10, -10]} color="blue" decay={0.2} />
+	// 				<PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
+	// 				<OrbitControls />
+	// 			</ViewImpl>
+	// 			{/* </Suspense> */}
+	// 		</Three>
+	// 	)
+	// }
+
+	const isUsingFiberScene = Math.random() > 0.5
+	const banana = isUsingFiberScene ? fiberContainer : imageContainer
+
 	return (
-		// container
 		<div className="flex flex-col gap-2 p-4 bg-GACTIVEABLE rounded-lg">
-			{/* image */}
-			<img src={data.imageURL} alt="viz data card image" className="w-full h-auto" />
-			{/* category */}
-			<div className="text-lg font-semibold">{data.category}</div>
-			{/* tags */}
-			{createTagRow(data.tags)}
+			{banana()}
+			<div className="text-lg font-semibold">{props.category}</div>
+			{createTagRow(props.tags)}
 		</div>
-	);
-};
+	)
+}
 
 export const createVizDataList = () => {
 	return (
 		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
 			{pipe(
 				vizData,
-				rotateArray,
 				array.map((a) => ({ ...a, category: wrapStringInPipe(a.category) })),
 				(a) => a.map(createVizDataCard),
 				// (a) => (
@@ -128,5 +120,5 @@ export const createVizDataList = () => {
 				// ),
 			)}
 		</div>
-	);
-};
+	)
+}

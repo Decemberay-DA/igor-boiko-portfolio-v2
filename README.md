@@ -14,7 +14,7 @@ based on T3 + Fiber + Three
     - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
 - [x] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
 - [ ] integrate r3f in to T3
-- [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it
+- [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
 
 ### build
 
@@ -42,13 +42,16 @@ Installed:
     tunnel-rat@0.1.2 - Used for network tunneling capabilities; it facilitates connections between separated networks which cannot directly connect to each other.
 
 SusCzIAmStoopid:
-    @ducanh2912/next-pwa@10.2.7 - Integrates Progressive Web App (PWA) functionality with Next.js, enabling offline capabilities and improved loading times.
+    (what even is it?) => @ducanh2912/next-pwa@10.2.7 - Integrates Progressive Web App (PWA) functionality with Next.js, enabling offline capabilities and improved loading times.
     file-loader@6.2.0 - Webpack loader to manage importing/including files such as images and fonts into your projects, handling them as URL/file dependencies.
     glslify-loader@2.0.0 - A Webpack loader for glslify, which allows importing GLSL shader code into JavaScript files as modules.
     glslify@7.1.1 - A node.js-style module system for GLSL, allowing the composition of shaders from various sources, enhancing reusability and maintainability.
     url-loader@4.1.1 - A Webpack loader similar to file-loader, but can return a Data URL if the file is smaller than a byte limit, reducing the number of requests needed for small files.
 
-
+Plan:
+    MesureInLighthouse:
+        - [ ] display styff in usual fiber components
+        - [ ] redisplay it using stolen code from three-fiber-starter
 
 
 
