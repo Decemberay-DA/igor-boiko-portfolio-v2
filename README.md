@@ -1,9 +1,5 @@
 # igor-boiko-portfolio-v2
 
-## Tech stack
-
-based on T3 + Fiber + Three
-
 ## TODO
 
 ### prepare

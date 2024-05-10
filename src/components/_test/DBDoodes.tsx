@@ -12,7 +12,6 @@ type DBDoodesProps = {
 	doodes: Doode[]
 }
 
-export const getDoodesFromDB = async () => await db.query.posts.findMany()
 
 export default function DBDoodes({ doodes }: DBDoodesProps) {
 	return (

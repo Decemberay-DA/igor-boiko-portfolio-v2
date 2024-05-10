@@ -1,6 +1,7 @@
 import Link from "next/link"
 import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
-import DBDoodes, { getDoodesFromDB } from "../../components/_test/DBDoodes"
+import DBDoodes from "../../components/_test/DBDoodes"
+import { getAllDoodesFromDB } from "~/server/queries"
 
 // to always get current bd data
 export const dynamic = "force-dynamic"
@@ -17,7 +18,7 @@ export default async function Layer2Page() {
 				<div className="w-full h-fit bg-slate-900 flex flex-col gap-4">
 					<TestThreeSceneCanvas />
 					<p className="text-2xl font-bold">meet the DBDoodes:</p>
-					<DBDoodes doodes={await getDoodesFromDB()} />
+					<DBDoodes doodes={await getAllDoodesFromDB()} />
 				</div>
 			</div>
 		</main>

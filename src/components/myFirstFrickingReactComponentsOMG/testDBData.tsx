@@ -14,9 +14,11 @@ const Common = dynamic(() => import("@/components/canvas/View"), { ssr: false })
 const Loading = () => (
 	<div className="flex h-96 w-full flex-col items-center justify-center">
 		<svg
+
 			className="animate-spin h-12 w-12 text-black"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
+			
 			viewBox="0 0 24 24">
 			<circle
 				className="opacity-25"
