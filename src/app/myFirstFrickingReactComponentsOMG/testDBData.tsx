@@ -66,26 +66,15 @@ export const createTagRow = (tags: string[]) => {
 // three scene stuff ========-====-====-====-============
 
 // loading scene on client side
-import dynamic from "next/dynamic"
-const Three = dynamic(() => import("./Three").then((m) => m.Three), { ssr: false })
-const CommonBG = dynamic(() => import("./commonBG").then((m) => m.CommonBG), { ssr: false })
-
-import { View as ViewImpl } from "@react-three/drei"
 
 export const createVizDataCard = (props: VizCardProp) => {
 	const imageContainer = () => <img src={props.imageURL} alt="imageContainer" className="w-full h-auto" />
 	const fiberContainer = () => <img src={props.imageURL} alt="fiberContainer" className="w-[50%] h-auto" />
-	
+
 	// some problems with loading it on server side for some reason => fix
 	// const fiberContainer = () => {
 	// 	return (
-	// 		<Three>
-	// 			{/* <Suspense fallback={<div>Loading...</div>}> */}
-	// 			<ViewImpl>
-	// 				<CommonBG />
-	// 			</ViewImpl>
-	// 			{/* </Suspense> */}
-	// 		</Three>
+	// three fiber thing
 	// 	)
 	// }
 
