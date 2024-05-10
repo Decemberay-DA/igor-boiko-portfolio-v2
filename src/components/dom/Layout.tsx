@@ -5,8 +5,8 @@ import { useRef } from "react"
 
 const Scene = dynamic(() => import("@/components/canvas/Scene").then((mod) => mod.Scene), { ssr: false })
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-	const ref = useRef<HTMLDivElement>(null)
+export const Layout = ({ children }: { children: React.ReactNode }) => {
+	const ref = useRef<HTMLDivElement>(null!)
 
 	return (
 		<div
@@ -37,5 +37,3 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 		</div>
 	)
 }
-
-export { Layout }
