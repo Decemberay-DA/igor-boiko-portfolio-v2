@@ -1,14 +1,15 @@
 "use client"
+
 import React, { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { FIBER, THREE } from "~/exp"
 
-
-export const TestBox = (props: FIBER.ThreeElements["mesh"]) => {
+export default function TestBox(props: FIBER.ThreeElements["mesh"]) {
 	const ref = useRef<THREE.Mesh>(null!)
 	const [hovered, hover] = useState(false)
 	const [clicked, click] = useState(false)
 	useFrame((state, delta) => (ref.current.rotation.x += delta))
+
 	return (
 		<mesh
 			{...props}

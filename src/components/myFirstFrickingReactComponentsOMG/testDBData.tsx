@@ -18,14 +18,7 @@ export const createTagRow = (tags: string[]) => {
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
 
-const Common = dynamic(
-	() =>
-		import("@/components/canvas/View").then((mod) => {
-			console.log("Common was loaded")
-			return mod.Common
-		}),
-	{ ssr: false },
-)
+const Common = dynamic(() => import("@/components/canvas/View"), { ssr: false })
 const Loading = () => (
 	<div className="flex h-96 w-full flex-col items-center justify-center">
 		<svg
@@ -52,7 +45,7 @@ const Logo = dynamic(() => import("@/components/canvas/Examples").then((mod) => 
 const Dog = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Dog), { ssr: false })
 const Duck = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Duck), { ssr: false })
 
-const View = dynamic(() => import("@/components/canvas/View").then((mod) => mod.View), {
+const View = dynamic(() => import("@/components/canvas/View"), {
 	ssr: false,
 	loading: () => <Loading />,
 })
@@ -71,7 +64,7 @@ const View = dynamic(() => import("@/components/canvas/View").then((mod) => mod.
 
 // when using simple canvas
 import React from "react"
-import { TestThreeSceneCanvas } from "../_test/TestThreeScene"
+import TestThreeSceneCanvas from "../_test/TestThreeScene"
 import { VizCardProp, vizData, wrapStringInPipe } from "./testData"
 import { id } from "fp-ts/lib/Refinement"
 
