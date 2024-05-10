@@ -2,6 +2,9 @@ import Link from "next/link"
 import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import DBDoodes, { getDoodesFromDB } from "../../components/_test/DBDoodes"
 
+// to always get current bd data
+export const dinamic = "force-dynamic"
+
 export default async function Layer2Page() {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#24984c] to-[#152c2b] text-white">
