@@ -1,16 +1,8 @@
 import { array } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
 
-export const createTagChip = (tag: string) => {
-	return (
-		<div className="inline-block bg-GACTIVERIGHT text-white rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
-			{tag}
-		</div>
-	)
-}
-
 export const createTagRow = (tags: string[]) => {
-	return <div className="flex flex-wrap gap-2">{tags.map((tag) => createTagChip(tag))}</div>
+	return <div className="flex flex-wrap gap-2">{tags.map((tag) => TagChip({ tag: tag }))}</div>
 }
 
 // three scene stuff ========-====-====-====-============
@@ -55,6 +47,7 @@ import React from "react"
 import TestThreeSceneCanvas from "../_test/TestThreeScene"
 import { VizCardProp, vizData, wrapStringInPipe } from "./testData"
 import { id } from "fp-ts/lib/Refinement"
+import TagChip from "./TagChip"
 
 // loading scene on client side
 export const createVizDataCard = (props: VizCardProp) => {
