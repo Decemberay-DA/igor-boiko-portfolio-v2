@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic"
 import { useRef } from "react"
 
-const Scene = dynamic(() => import("@/components/canvas/Scene").then((mod) => mod.Scene), { ssr: false })
+const Scene = dynamic(() => import("@/components/canvas/Scene"), { ssr: false })
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 	const ref = useRef<HTMLDivElement>(null!)

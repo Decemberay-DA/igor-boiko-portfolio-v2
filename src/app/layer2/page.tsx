@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { TestThreeSceneCanvas } from "~/components/_test/TestThreeScene"
+import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import { TestVizDataList } from "~/components/myFirstFrickingReactComponentsOMG/testDBData"
 
 export default function Layer2Page() {

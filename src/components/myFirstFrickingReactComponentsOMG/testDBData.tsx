@@ -18,14 +18,7 @@ export const createTagRow = (tags: string[]) => {
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
 
-const Common = dynamic(
-	() =>
-		import("@/components/canvas/View").then((mod) => {
-			console.log("Common was loaded")
-			return mod.Common
-		}),
-	{ ssr: false },
-)
+const Common = dynamic(() => import("@/components/canvas/View"), { ssr: false })
 const Loading = () => (
 	<div className="flex h-96 w-full flex-col items-center justify-center">
 		<svg
@@ -52,26 +45,14 @@ const Logo = dynamic(() => import("@/components/canvas/Examples").then((mod) => 
 const Dog = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Dog), { ssr: false })
 const Duck = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Duck), { ssr: false })
 
-const View = dynamic(() => import("@/components/canvas/View").then((mod) => mod.View), {
+const View = dynamic(() => import("@/components/canvas/View"), {
 	ssr: false,
 	loading: () => <Loading />,
 })
 
-// export const TestThreeScene = () => {
-// 	return (
-// 		<div className="w-full text-center md:w-3/5">
-// 			<View orbit className="relative h-full sm:h-48 sm:w-full">
-// 				{/* <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} /> */}
-// 				<Sphere position={[0, -1.6, 0]} args={[0.5, 32, 32]} />
-// 				<Common color={"lightpink"} />
-// 			</View>
-// 		</div>
-// 	)
-// }
-
 // when using simple canvas
 import React from "react"
-import { TestThreeSceneCanvas } from "../_test/TestThreeScene"
+import TestThreeSceneCanvas from "../_test/TestThreeScene"
 import { VizCardProp, vizData, wrapStringInPipe } from "./testData"
 import { id } from "fp-ts/lib/Refinement"
 
@@ -115,10 +96,6 @@ export const TestVizDataList = () => {
 							id: index,
 						},
 						createVizDataCard,
-						// array.mapWithIndex((index, a) => ({
-						// 	...a as Object,
-						// 	id: index
-						// })
 					),
 				),
 			)}
