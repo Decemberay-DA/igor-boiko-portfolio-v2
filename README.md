@@ -49,9 +49,14 @@ SusCzIAmStoopid:
     url-loader@4.1.1 - A Webpack loader similar to file-loader, but can return a Data URL if the file is smaller than a byte limit, reducing the number of requests needed for small files.
 
 Plan:
-    MesureInLighthouse:
-        - [ ] display styff in usual fiber components
-        - [ ] redisplay it using stolen code from three-fiber-starter
+    - [x] display styff in usual fiber components
+    - [ ] test how routing will work in standard fiber components
+    - [ ] redisplay it using stolen code from three-fiber-starter
+
+TheHowTFThisWorks:
+    <View /> = forwardRef(...)
+        <Three /> = <r3f.In /> = tunnel()
+            <fider/drei/View />     
 
 
 

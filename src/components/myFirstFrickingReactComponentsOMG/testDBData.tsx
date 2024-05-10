@@ -73,6 +73,7 @@ const View = dynamic(() => import("@/components/canvas/View").then((mod) => mod.
 import React from "react"
 import { TestThreeSceneCanvas } from "../_test/TestThreeScene"
 import { VizCardProp, vizData, wrapStringInPipe } from "./testData"
+import { id } from "fp-ts/lib/Refinement"
 
 // loading scene on client side
 export const createVizDataCard = (props: VizCardProp) => {
@@ -106,8 +107,20 @@ export const TestVizDataList = () => {
 		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
 			{pipe(
 				data,
-				array.map((a) => ({ ...a, category: wrapStringInPipe(a.category) })),
-				(a) => a.map(createVizDataCard),
+				array.mapWithIndex((index, a) =>
+					pipe(
+						{
+							...a,
+							category: wrapStringInPipe(a.category),
+							id: index,
+						},
+						createVizDataCard,
+						// array.mapWithIndex((index, a) => ({
+						// 	...a as Object,
+						// 	id: index
+						// })
+					),
+				),
 			)}
 		</div>
 	)

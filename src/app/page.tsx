@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { TestVizDataList } from "./myFirstFrickingReactComponentsOMG/testDBData"
-import { TestThreeSceneCanvas } from "./_test/TestThreeScene"
+import { TestVizDataList } from "../components/myFirstFrickingReactComponentsOMG/testDBData"
+import { TestThreeSceneCanvas } from "../components/_test/TestThreeScene"
 
 export default function HomePage() {
 	return (
