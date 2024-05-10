@@ -1,6 +1,6 @@
 import Link from "next/link"
 import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
-import DBDoodes, { getDoodesFromDB } from "./DBDoodes"
+import DBDoodes, { getDoodesFromDB } from "../../components/_test/DBDoodes"
 
 export default async function Layer2Page() {
 	return (

@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation"
 
-export const Header = () => {
+export const Header = ({ ...props }) => {
 	const router = useRouter()
 	return (
-		<header className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white sticky top-0">
+		<header className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white sticky top-0" {...props}>
 			<h2 className="text-2xl font-bold">Igor Boiko The Dev V2</h2>
 			<h1 className="text-2xl font-bold" onClick={() => router.push("/")}>
 				main
