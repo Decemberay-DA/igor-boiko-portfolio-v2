@@ -1,3 +1,6 @@
+"use client"
+
+import { Sphere } from "@react-three/drei"
 import { array } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
 
@@ -106,7 +109,14 @@ const Logo = dynamic(
 		}),
 	{ ssr: false },
 )
-const Dog = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Dog), { ssr: false })
+const Dog = dynamic(
+	() =>
+		import("@/components/canvas/Examples").then((mod) => {
+			console.log("Dog was loaded")
+			return mod.Dog
+		}),
+	{ ssr: false },
+)
 const Duck = dynamic(() => import("@/components/canvas/Examples").then((mod) => mod.Duck), { ssr: false })
 
 const View = dynamic(
@@ -121,15 +131,65 @@ const View = dynamic(
 	},
 )
 
+// export const TestThreeScene = () => {
+// 	return (
+// 		<div className="w-full text-center md:w-3/5">
+// 			<View orbit className="relative h-full sm:h-48 sm:w-full">
+// 				{/* <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} /> */}
+// 				<Sphere position={[0, -1.6, 0]} args={[0.5, 32, 32]} />
+// 				<Common color={"lightpink"} />
+// 			</View>
+// 		</div>
+// 	)
+// }
+
+// when using simple canvas
+import { createRoot } from "react-dom/client"
+import React, { useRef, useState } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
+import { THREE } from "~/exp"
+
+type BoxProps = {
+	position?: THREE.Vector3
+	props?: {
+		[x: string]: any
+	}
+}
+const Box = (props: BoxProps) => {
+	// This reference gives us direct access to the THREE.Mesh object
+	const ref = useRef<THREE.Mesh>(null)
+	// const ref = useRef<THREE.Mesh | null>(null)
+	// Hold state for hovered and clicked events
+	const [hovered, hover] = useState(false)
+	const [clicked, click] = useState(false)
+	// Subscribe this component to the render-loop, rotate the mesh every frame
+	// Return the view, these are regular Threejs elements expressed in JSX
+	useFrame((state, delta) => (ref.current!.rotation.x += delta))
+
+	return (
+		<mesh
+			{...props.props}
+			ref={ref}
+			position={props.position}
+			scale={clicked ? 1.5 : 1}
+			onClick={(event) => click(!clicked)}
+			onPointerOver={(event) => hover(true)}
+			onPointerOut={(event) => hover(false)}>
+			<boxGeometry args={[1, 1, 1]} />
+			<meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+		</mesh>
+	)
+}
 export const TestThreeScene = () => {
 	return (
 		<div className="w-full text-center md:w-3/5">
-			<View className="flex h-96 w-full flex-col items-center justify-center">
-				<Suspense fallback={<Loading />}>
-					<Logo route="/blob" scale={0.6} position={[0, 0, 0]} />
-					<Common />
-				</Suspense>
-			</View>
+			<Canvas>
+				<ambientLight intensity={Math.PI / 2} />
+				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+				<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+				{/* <Box position={[-1.2, 0, 0]} /> */}
+				<Box position={new THREE.Vector3(1.2, 0, 0)} />
+			</Canvas>
 		</div>
 	)
 }

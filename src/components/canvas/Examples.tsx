@@ -73,6 +73,5 @@ export const Duck = ({ ...props }) => {
 
 export const Dog = ({ ...props }) => {
 	const { scene } = useGLTF("/dog.glb")
-
 	return <primitive object={scene} {...props} />
 }
