@@ -3,7 +3,7 @@ import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import DBDoodes, { getDoodesFromDB } from "../../components/_test/DBDoodes"
 
 // to always get current bd data
-export const dinamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 
 export default async function Layer2Page() {
 	return (
