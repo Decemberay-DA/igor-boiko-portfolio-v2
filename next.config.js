@@ -8,7 +8,7 @@ await import("./src/env.js")
 // const config = {};
 const config = {
 	// DONT FOREGET TO DISABLE IN PRODUCTION hahaha
-	sourceMaps: true,
+	// sourceMaps: true,
 }
 
 export default config

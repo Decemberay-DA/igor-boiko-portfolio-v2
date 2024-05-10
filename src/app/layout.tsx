@@ -1,6 +1,10 @@
 import "~/styles/globals.css"
 
 import { Inter } from "next/font/google"
+import Link from "next/link"
+import dynamic from "next/dynamic"
+
+const Header = dynamic(() => import("~/components/Header").then((mod) => mod.Header), { ssr: false })
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -18,10 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body className={`font-sans ${inter.variable}`}>
 				{/* use layered top layout later like on v1 */}
-				<header className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white sticky top-0">
-					<h2 className="text-2xl font-bold">Igor Boiko The Dev V2</h2>
-					<h2 className="text-2xl font-bold">Igor Boiko The Dev V3</h2>
-				</header>
+				<Header />
 
 				{children}
 
