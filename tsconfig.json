@@ -27,9 +27,9 @@
 		"baseUrl": ".",
 		"paths": {
 			// shall i even use @/ or ~/ ?
-			// for T3 things
+			// for T3 thingis
 			"~/*": ["./src/*"],
-			// for my things
+			// for my thingis
 			// "@/*": ["app/*", "src/*"]
 			"@/*": ["app/*", "src/*", "./src/*"]
 		}
