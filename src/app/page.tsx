@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { createVizDataList } from "./myFirstFrickingReactComponentsOMG/testDBData";
+import Link from "next/link"
+import { TestVizDataList } from "../components/myFirstFrickingReactComponentsOMG/testDBData"
+import TestThreeSceneCanvas from "../components/_test/TestThreeScene"
 
 export default function HomePage() {
 	return (
@@ -9,7 +10,6 @@ export default function HomePage() {
 					Create <span className="text-[hsl(280,100%,70%)]">T2</span> App
 				</h1>
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-					{/* duh */}
 					<Link
 						className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
 						href="https://create.t3.gg/en/usage/first-steps"
@@ -20,7 +20,7 @@ export default function HomePage() {
 							authentication.
 						</div>
 					</Link>
-					{/* duh */}
+
 					<Link
 						className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
 						href="https://create.t3.gg/en/introduction"
@@ -31,9 +31,14 @@ export default function HomePage() {
 						</div>
 					</Link>
 				</div>
-				{/* duh */}
-				{createVizDataList()}
+
+				<div className="w-full h-fit flex flex-col gap-4">
+					<div className="w-full h-fit bg-slate-900">
+						<TestThreeSceneCanvas />
+					</div>
+					<TestVizDataList />
+				</div>
 			</div>
 		</main>
-	);
+	)
 }
