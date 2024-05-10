@@ -26,7 +26,12 @@
 		/* Path Aliases */
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./src/*"]
+			// shall i even use @/ or ~/ ?
+			// for T3 things
+			"~/*": ["./src/*"],
+			// for my things
+			// "@/*": ["app/*", "src/*"]
+			"@/*": ["app/*", "src/*", "./src/*"]
 		}
 	},
 	"include": [
