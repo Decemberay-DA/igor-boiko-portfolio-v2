@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { createVizDataList } from "./myFirstFrickingReactComponentsOMG/testDBData";
+import Link from "next/link"
+import { TestThreeScene, TestVizDataList } from "./myFirstFrickingReactComponentsOMG/testDBData"
 
 export default function HomePage() {
 	return (
@@ -32,8 +32,13 @@ export default function HomePage() {
 					</Link>
 				</div>
 				{/* duh */}
-				{createVizDataList()}
+				<div className="w-full h-fit flex flex-col gap-4">
+					<div className="w-full h-fit bg-slate-900">
+						<TestThreeScene />
+					</div>
+					<TestVizDataList />
+				</div>
 			</div>
 		</main>
-	);
+	)
 }
