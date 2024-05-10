@@ -1,8 +1,6 @@
 export type TagChipProps = {
 	tag: string
-	props?: {
-		[key: string]: string
-	}
+	props?: Record<string, string>
 }
 
 export default function TagChip(props: TagChipProps) {
