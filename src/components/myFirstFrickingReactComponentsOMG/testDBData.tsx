@@ -14,11 +14,9 @@ const Common = dynamic(() => import("@/components/canvas/View"), { ssr: false })
 const Loading = () => (
 	<div className="flex h-96 w-full flex-col items-center justify-center">
 		<svg
-
 			className="animate-spin h-12 w-12 text-black"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
-			
 			viewBox="0 0 24 24">
 			<circle
 				className="opacity-25"
@@ -50,10 +48,11 @@ import TestThreeSceneCanvas from "../_test/TestThreeScene"
 import { VizCardProp, vizData, wrapStringInPipe } from "./testData"
 import { id } from "fp-ts/lib/Refinement"
 import TagChip from "./TagChip"
+import Image from "next/image"
 
 // loading scene on client side
 export const createVizDataCard = (props: VizCardProp) => {
-	const imageContainer = () => <img src={props.imageURL} alt="imageContainer" className="w-full h-auto" />
+	const imageContainer = () => <Image src={props.imageURL} alt={props.category} className="w-full h-auto" />
 	const fiberContainer = () => <TestThreeSceneCanvas />
 
 	const isThree = Math.random() > 0.5
