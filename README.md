@@ -12,14 +12,16 @@
 - [almost] integrate r3f in to T3
 - [x] drizzler db
 - [ ] try modal router thingy
+- [ ] Prototype UI in figma or somwhere else
 - [ ] try chadui or similar thing
 - [ ] try playsible
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
 
 ### build
 
-- [ ] old three scene with camera movement linked to html section
-- [ ] headder with dymaniczlly generated page links dependent on page
+Like:
+    - [ ] old three scene with camera movement linked to html section
+    - [ ] headder with dymaniczlly generated page links dependent on page
 
 Optional:
     - [ ] boid motion for stars
@@ -45,8 +47,16 @@ Inspiration:
     - offcanvas menu - https://tympanus.net/Development/OffCanvasMenuEffects/index.html#
 
 
+#### modal thingy
 
-### install from three-fiber-starter:
+
+
+
+
+
+
+
+#### install from three-fiber-starter:
 
 Installed:
     three@0.160.1 - The main three.js library, a lightweight 3D library with a default WebGL renderer. Used for creating and displaying animated 3D computer graphics in web applications.

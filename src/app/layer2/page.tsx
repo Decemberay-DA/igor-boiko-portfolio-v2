@@ -2,6 +2,7 @@ import Link from "next/link"
 import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import DBDoodes from "../../components/_test/DBDoodes"
 import { getAllDoodesFromDB } from "~/server/queries"
+import HookedThing from "~/components/myFirstFrickingReactComponentsOMG/HookedThing"
 
 // to always get current bd data
 export const dynamic = "force-dynamic"
@@ -15,6 +16,12 @@ export default async function Layer2Page() {
 					href="https://github.com/Decemberay-DA?tab=overview&from=2024-05-01&to=2024-05-10">
 					Layer2Page
 				</Link>
+				<div className="flex flex-row gap-2 w-full h-fit content-stretch">
+					<HookedThing />
+					<HookedThing />
+					<HookedThing />
+					<HookedThing />
+				</div>
 				<div className="w-full h-fit bg-slate-900 flex flex-col gap-4">
 					<TestThreeSceneCanvas />
 					<p className="text-2xl font-bold">meet the DBDoodes:</p>

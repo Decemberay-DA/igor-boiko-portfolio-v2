@@ -52,7 +52,7 @@ import Image from "next/image"
 
 // loading scene on client side
 export const createVizDataCard = (props: VizCardProp) => {
-	const imageContainer = () => <Image src={props.imageURL} alt={props.category} className="w-full h-auto" />
+	const imageContainer = () => <img src={props.imageURL} alt={props.category} className="w-full h-auto" />
 	const fiberContainer = () => <TestThreeSceneCanvas />
 
 	const isThree = Math.random() > 0.5
@@ -78,21 +78,18 @@ export const createVizDataCard = (props: VizCardProp) => {
 const data = vizData
 
 export const TestVizDataList = () => {
-	return (
-		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-			{pipe(
-				data,
-				array.mapWithIndex((index, a) =>
-					pipe(
-						{
-							...a,
-							category: wrapStringInPipe(a.category),
-							id: index,
-						},
-						createVizDataCard,
-					),
-				),
-			)}
-		</div>
+	const a = pipe(
+		data,
+		array.mapWithIndex((index, a) =>
+			pipe(
+				{
+					...a,
+					category: wrapStringInPipe(a.category),
+					id: index,
+				},
+				createVizDataCard,
+			),
+		),
 	)
+	return <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">{a}</div>
 }
