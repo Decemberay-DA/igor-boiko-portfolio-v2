@@ -3,6 +3,7 @@ import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import DBDoodes from "../../components/_test/DBDoodes"
 import { getAllDoodesFromDB } from "~/server/queries"
 import HookedThing from "~/components/myFirstFrickingReactComponentsOMG/HookedThing"
+import HookedThingReferenced from "~/components/myFirstFrickingReactComponentsOMG/HookedThingReferenced"
 
 // to always get current bd data
 export const dynamic = "force-dynamic"
@@ -19,8 +20,7 @@ export default async function Layer2Page() {
 				<div className="flex flex-row gap-2 w-full h-fit content-stretch">
 					<HookedThing />
 					<HookedThing />
-					<HookedThing />
-					<HookedThing />
+					<HookedThingReferenced />
 				</div>
 				<div className="w-full h-fit bg-slate-900 flex flex-col gap-4">
 					<TestThreeSceneCanvas />

@@ -1,10 +1,6 @@
 "use client"
-
 import { useState, useEffect } from "react"
 
-/**
- * hooks
- */
 export default function HookedThing({ ...props }) {
 	const [val, setVal] = useState(0)
 
@@ -24,6 +20,14 @@ export default function HookedThing({ ...props }) {
 		}
 	}, [])
 
+	const [dep, setDep] = useState("0")
+	useEffect(() => {
+		const d = val % 4 === 0 ? "no4" : `>> ${val} <<`
+		setDep(d)
+
+		return () => console.log("dep destroyed with component")
+	}, [val])
+
 	return (
 		<div
 			{...props}
@@ -36,6 +40,7 @@ export default function HookedThing({ ...props }) {
 				className="bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded">
 				reset
 			</button>
+			<div>dep: {dep}</div>
 		</div>
 	)
 }
