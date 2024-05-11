@@ -17,6 +17,19 @@
 - [ ] try playsible
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
 
+
+
+### learn
+
+- https://www.youtube.com/watch?v=PbjHxIuHduU
+
+Next.js
+    - https://www.youtube.com/watch?v=vCOSTG10Y4o
+    - https://www.youtube.com/watch?v=vwSlYG7hFk0
+    - https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI
+
+
+
 ### build
 
 Like:
