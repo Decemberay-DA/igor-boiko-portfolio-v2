@@ -10,9 +10,10 @@ import { PerspectiveCamera } from "@react-three/drei"
 export default function Common(
 	{ color }: { color?: THREE.ColorRepresentation },
 	fallback: React.ReactNode = null,
+	{ ...rest },
 ) {
 	return (
-		<Suspense fallback={fallback}>
+		<Suspense fallback={fallback} {...rest}>
 			{color && <color attach="background" args={[color]} />}
 			<ambientLight />
 			<pointLight position={[20, 30, 10]} intensity={3} decay={0.2} />

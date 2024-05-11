@@ -1,7 +1,12 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect, ComponentProps } from "react"
 
-export default function HookedThing({ ...props }) {
+type Props = {
+	props?: ComponentProps<"div">
+	children?: React.ReactNode
+}
+
+export default function HookedThing(p?: Props) {
 	const [val, setVal] = useState(0)
 
 	useEffect(() => {
@@ -30,7 +35,7 @@ export default function HookedThing({ ...props }) {
 
 	return (
 		<div
-			{...props}
+			{...p?.props}
 			className="flex flex-col flex-grow flex-shrink gap-2 border-2 border-red-500 p-4 bg-gray-500 rounded-lg">
 			<div className="text-lg text-center">HookedThing:</div>
 			<div>frame count: </div>
@@ -41,6 +46,7 @@ export default function HookedThing({ ...props }) {
 				reset
 			</button>
 			<div>dep: {dep}</div>
+			{p?.children}
 		</div>
 	)
 }

@@ -24,7 +24,7 @@ export const Blob = ({ route = "/", ...props }) => {
 }
 
 export const Logo = ({ route = "/blob", ...props }) => {
-	const mesh = useRef<THREE.Group>(null)
+	const mesh = useRef<THREE.Group>(null!)
 	const router = useRouter()
 
 	const [hovered, hover] = useState(false)
@@ -36,11 +36,9 @@ export const Logo = ({ route = "/blob", ...props }) => {
 	useCursor(hovered)
 	useFrame((state, delta) => {
 		const t = state.clock.getElapsedTime()
-		if (mesh.current) {
-			mesh.current.rotation.y = Math.sin(t) * (Math.PI / 8)
-			mesh.current.rotation.x = Math.cos(t) * (Math.PI / 8)
-			mesh.current.rotation.z -= delta / 4
-		}
+		mesh.current.rotation.y = Math.sin(t) * (Math.PI / 8)
+		mesh.current.rotation.x = Math.cos(t) * (Math.PI / 8)
+		mesh.current.rotation.z -= delta / 4
 	})
 
 	return (

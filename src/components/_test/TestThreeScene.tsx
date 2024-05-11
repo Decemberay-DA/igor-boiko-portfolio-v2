@@ -8,6 +8,7 @@ const TestBox = dynamic(() => import("@/components/_test/Box"), { ssr: false })
 
 /**
  * default solution to creating a canvas for threejs
+ * this simple one is just works
  */
 export default function TestThreeSceneCanvas() {
 	return (
@@ -17,6 +18,7 @@ export default function TestThreeSceneCanvas() {
 			<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 			<TestBox position={[-1.2, 0, 0]} />
 			<TestBox position={[1.2, 0, 0]} />
+			<TestBox position={[0, 0, 0]} />
 		</Canvas>
 	)
 }
