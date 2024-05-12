@@ -9,11 +9,13 @@
 - [16/30] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
     - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
 - [x] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
-- [almost] integrate r3f in to T3
+- [x] integrate r3f in to T3
+- [x] stole fast r3f from three-fiber-starter
 - [x] drizzler db
 - [ ] try modal router thingy
 - [ ] Prototype UI in figma or somwhere else
 - [ ] try chadui or similar thing
+- [ ] add smooth scrolling to the pages
 - [ ] try playsible
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
 
@@ -70,7 +72,7 @@ Inspiration:
 
 
 
-#### install from three-fiber-starter:
+#### install from three-fiber-starter: --done
 
 Installed:
     three@0.160.1 - The main three.js library, a lightweight 3D library with a default WebGL renderer. Used for creating and displaying animated 3D computer graphics in web applications.
@@ -88,8 +90,8 @@ SusCzIAmStoopid:
 
 Plan:
     - [x] display styff in usual fiber components
-    - [ ] test how routing will work in standard fiber components
-    - [ ] redisplay it using stolen code from three-fiber-starter
+    - [x] test how routing will work in standard fiber components
+    - [x] redisplay it using stolen code from three-fiber-starter
 
 TheHowTFThisWorks:
     <Layout />
@@ -98,16 +100,4 @@ TheHowTFThisWorks:
                 <Three /> = <r3f.In /> = tunnel()
                     <fider/drei/View />     
 
-
-
-
-
-
-
----
-
-some unrelated stuff idk how is it got here
-
-
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
