@@ -32,7 +32,7 @@ const tagOptions = [
 const getRandomItem = <T>(items: T[]): T => items[Math.floor(Math.random() * items.length)]!
 
 const generateRandomVizData = (): VizCardProp[] => {
-	return Array.from({ length: 24 }, () => ({
+	return Array.from({ length: 12 }, () => ({
 		imageURL: getRandomItem(imageExamples),
 		category: getRandomItem(categories),
 		tags: getRandomItem(tagOptions),

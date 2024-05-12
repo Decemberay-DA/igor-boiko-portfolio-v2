@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic"
 
-export const dynBlob = () =>
+export const dinBlob = () =>
 	dynamic(() => import("~/components/canvas/Examples").then((mod) => mod.Blob), {
 		ssr: false,
 	})
-export const dynCommon = () => dynamic(() => import("~/components/canvas/Common"), { ssr: false })
-export const dynView = () =>
+export const dinCommon = () => dynamic(() => import("~/components/canvas/Common"), { ssr: false })
+export const dinView = () =>
 	dynamic(() => import("~/components/canvas/View"), {
 		ssr: false,
 		loading: () => (

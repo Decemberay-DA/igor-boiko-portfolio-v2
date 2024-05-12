@@ -1,15 +1,16 @@
 "use client"
 
 import { useRef } from "react"
-import { dynScene } from "../dinamicImports/htmlElements"
+import { dinScene } from "../dinamicImports/htmlElements"
 
-const Scene = dynScene()
+const Scene = dinScene()
 
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
 	const ref = useRef<HTMLDivElement>(null)
 
 	return (
 		<div
+			// for some reason tailwind dont working here
 			style={{
 				position: "relative",
 				width: " 100%",
@@ -20,7 +21,6 @@ export const Layout = ({ children }: { children?: React.ReactNode }) => {
 			// className="relative w-[100%] h-[100%] overflow-auto touch-action-auto"
 			ref={ref}>
 			{children}
-
 			<Scene
 				style={{
 					position: "fixed",

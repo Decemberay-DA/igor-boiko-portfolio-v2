@@ -1,4 +1,4 @@
-const title = "head title"
+const title = "head title from head component"
 const url = "https://react-three-next.vercel.app/"
 const description = "3d and coding portfolio / resume for Ygor Boiko - good developer ad artist"
 const author = "Ygor Boiko"

@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber"
 import { Preload } from "@react-three/drei"
 import { r3f } from "@/helpers/global"
 import * as THREE from "three"
+import React from "react"
 
 /**
  * Everything defined in here will persist between route changes, only children are swapped
