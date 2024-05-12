@@ -2,11 +2,10 @@
 import { useState, useEffect, ComponentProps } from "react"
 
 type Props = {
-	props?: ComponentProps<"div">
 	children?: React.ReactNode
-}
+} & ComponentProps<"div">
 
-export default function HookedThing(p?: Props) {
+export default function HookedThing({ children, ...rest }: Props) {
 	const [val, setVal] = useState(0)
 
 	useEffect(() => {
@@ -33,7 +32,7 @@ export default function HookedThing(p?: Props) {
 
 	return (
 		<div
-			{...p?.props}
+			{...rest}
 			className="flex flex-col flex-grow flex-shrink gap-2 border-2 border-red-500 p-4 bg-gray-500 rounded-lg">
 			<div className="text-lg text-center">HookedThing:</div>
 			<div>frame count: </div>
@@ -44,7 +43,7 @@ export default function HookedThing(p?: Props) {
 				reset
 			</button>
 			<div>dep: {dep}</div>
-			{p?.children}
+			{children}
 		</div>
 	)
 }

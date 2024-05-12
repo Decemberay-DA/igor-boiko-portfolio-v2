@@ -1,11 +1,19 @@
 import Link from "next/link"
 import DBDoodes from "../../components/_test/DBDoodes"
 import { getAllDoodesFromDB } from "~/server/queries"
-import HookedThing from "~/components/myFirstFrickingReactComponentsOMG/HookedThing"
-import HookedThingReferenced from "~/components/myFirstFrickingReactComponentsOMG/HookedThingReferenced"
 
 import { dynBlob, dynCommon, dynView } from "~/components/dinamicImports/3dModels"
-import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
+import dynamic from "next/dynamic"
+
+const HookedThing = dynamic(() => import("~/components/myFirstFrickingReactComponentsOMG/HookedThing"), {
+	ssr: false,
+})
+const HookedThingReferenced = dynamic(
+	() => import("~/components/myFirstFrickingReactComponentsOMG/HookedThingReferenced"),
+	{
+		ssr: false,
+	},
+)
 const Blob = dynBlob()
 const Common = dynCommon()
 const View = dynView()
@@ -30,7 +38,6 @@ export default async function Layer2Page() {
 					<Blob position={[-1.2, 0, 0]} />
 					<Blob position={[0, 0, 0]} />
 					<Blob position={[1.2, 0, 0]} />
-					{/* <OrbitControls /> */}
 					<Common />
 				</View>
 
