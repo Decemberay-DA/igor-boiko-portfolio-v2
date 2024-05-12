@@ -1,12 +1,14 @@
 import Link from "next/link"
-import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
 import DBDoodes from "../../components/_test/DBDoodes"
 import { getAllDoodesFromDB } from "~/server/queries"
 import HookedThing from "~/components/myFirstFrickingReactComponentsOMG/HookedThing"
 import HookedThingReferenced from "~/components/myFirstFrickingReactComponentsOMG/HookedThingReferenced"
 
-// to always get current bd data
-// export const dynamic = "force-dynamic"
+import { dynBlob, dynCommon, dynView } from "~/components/dinamicImports/3dModels"
+import TestThreeSceneCanvas from "~/components/_test/TestThreeScene"
+const Blob = dynBlob()
+const Common = dynCommon()
+const View = dynView()
 
 export default async function Layer2Page() {
 	return (
@@ -17,13 +19,22 @@ export default async function Layer2Page() {
 					href="https://github.com/Decemberay-DA?tab=overview&from=2024-05-01&to=2024-05-10">
 					Layer2Page
 				</Link>
-				<div className="flex flex-row gap-2 w-full h-fit content-stretch">
+
+				<div className="flex flex-row gap-2 w-full h-48 content-stretch">
 					<HookedThing />
 					<HookedThing />
 					<HookedThingReferenced />
 				</div>
+
+				<View className="relative h-20 w-full ">
+					<Blob position={[-1.2, 0, 0]} />
+					<Blob position={[0, 0, 0]} />
+					<Blob position={[1.2, 0, 0]} />
+					{/* <OrbitControls /> */}
+					<Common />
+				</View>
+
 				<div className="w-full h-fit bg-slate-900 flex flex-col gap-4">
-					<TestThreeSceneCanvas />
 					<p className="text-2xl font-bold">meet the DBDoodes:</p>
 					<DBDoodes doodes={await getAllDoodesFromDB()} />
 				</div>

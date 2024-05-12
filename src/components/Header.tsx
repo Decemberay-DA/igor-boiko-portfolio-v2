@@ -19,6 +19,11 @@ export const Header = ({ ...props }) => {
 				onClick={() => router.push("/layer2")}>
 				l2
 			</h1>
+			<h1
+				className=" bg-green-500 hover:bg-green-300 text-white py-2 px-4 roundedtext-2xl font-bold"
+				onClick={() => router.push("/page2")}>
+				p2
+			</h1>
 			<h2 className="text-2xl font-bold">Igor Boiko The Dev V3</h2>
 		</header>
 	)
