@@ -1,24 +1,35 @@
 "use client"
 import React from "react"
 import { Canvas } from "@react-three/fiber"
-import { THREE } from "~/exp"
 import dynamic from "next/dynamic"
+// import Common from "../canvas/Common"
+import View from "../canvas/View"
 
 const TestBox = dynamic(() => import("@/components/_test/Box"), { ssr: false })
+const Common = dynamic(() => import("~/components/canvas/Common"), { ssr: false })
 
 /**
  * default solution to creating a canvas for threejs
  * this simple one is just works
  */
 export default function TestThreeSceneCanvas() {
+	// works
+	// return (
+	// 	<Canvas>
+	// 		<TestBox position={[-1.2, 0, 0]} />
+	// 		<TestBox position={[1.2, 0, 0]} />
+	// 		<TestBox position={[0, 0, 0]} />
+	// 		<Common color={"#1fb2f5"} />
+	// 	</Canvas>
+	// )
+	// invisin=ble
 	return (
-		<Canvas className="w-full h-full">
-			<ambientLight intensity={Math.PI / 2} />
-			<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-			<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+		// <View className="w-full h-full">
+		<View className="w-full h-full">
 			<TestBox position={[-1.2, 0, 0]} />
 			<TestBox position={[1.2, 0, 0]} />
 			<TestBox position={[0, 0, 0]} />
-		</Canvas>
+			<Common color={"#1fb2f5"} />
+		</View>
 	)
 }

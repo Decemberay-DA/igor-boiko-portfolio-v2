@@ -1,9 +1,10 @@
 import { Inter } from "next/font/google"
 import dynamic from "next/dynamic"
-import { Layout } from "~/components/dom/Layout"
+// import { Layout } from "~/components/dom/Layout"
 import "~/styles/globals.css"
 
 const Header = dynamic(() => import("~/components/Header").then((mod) => mod.Header), { ssr: false })
+const Layout = dynamic(() => import("~/components/dom/Layout").then((mod) => mod.Layout), { ssr: false })
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -21,19 +22,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 		<html lang="en" className="antialiased">
 			{/* head will contain the components returned by the nearest parent head.tsx. Find out more at
 				https://beta.nextjs.org/docs/api-reference/file-conventions/head */}
-			<head />
-			<body className={`font-sans ${inter.variable}`}>
+			{/* <head /> */}
+			{/* <body className={`font-sans ${inter.variable}`}> */}
+			<body>
 				<Header />
 
-				{/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
-				<Layout>{children}</Layout>
+				<Layout>
+					{/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
+					{children}
+				</Layout>
 
 				{/* {children} */}
 
-				<footer className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white">
+				{/* <footer className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white">
 					<h2 className="text-2xl font-bold">foot V2</h2>
 					<h2 className="text-2xl font-bold">foot V3</h2>
-				</footer>
+				</footer> */}
 			</body>
 		</html>
 	)
