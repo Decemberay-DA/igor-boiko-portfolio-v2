@@ -29,8 +29,6 @@ export default function HookedThing(p?: Props) {
 	useEffect(() => {
 		const d = val % 4 === 0 ? "no4" : `>> ${val} <<`
 		setDep(d)
-
-		return () => console.log("dep destroyed with component")
 	}, [val])
 
 	return (

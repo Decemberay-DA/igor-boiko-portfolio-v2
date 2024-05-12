@@ -1,28 +1,27 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import { useRef } from "react"
+import { dynScene } from "../dinamicImports/htmlElements"
 
-const Scene = dynamic(() => import("@/components/canvas/Scene"), { ssr: false })
+const Scene = dynScene()
 
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
 	const ref = useRef<HTMLDivElement>(null)
 
 	return (
 		<div
-			ref={ref}
-			// tailwind not worked in starter project
-			// className='relative w-[100%] h-[100%] overflow-auto touch-action-auto'
 			style={{
 				position: "relative",
 				width: " 100%",
 				height: "100%",
 				overflow: "auto",
 				touchAction: "auto",
-			}}>
+			}}
+			// className="relative w-[100%] h-[100%] overflow-auto touch-action-auto"
+			ref={ref}>
 			{children}
+
 			<Scene
-				// className='absolute top-0 left-0 w-[100vw] h-[100vh] pointer-events-none'
 				style={{
 					position: "fixed",
 					top: 0,
@@ -31,6 +30,7 @@ export const Layout = ({ children }: { children?: React.ReactNode }) => {
 					height: "100vh",
 					pointerEvents: "none",
 				}}
+				// className="fixed top-0 left-0 w-[100vw] h-[100vh] pointer-events-none"
 				eventSource={ref}
 				eventPrefix="client"
 			/>

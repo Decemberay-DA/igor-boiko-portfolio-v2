@@ -2,9 +2,9 @@
 
 import React, { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
-import { FIBER, THREE } from "~/exp"
+import { THREE } from "~/exp"
 
-export default function TestBox(props: FIBER.ThreeElements["mesh"]) {
+export default function TestBox({ ...props }) {
 	const ref = useRef<THREE.Mesh>(null!)
 	const [hovered, setHovered] = useState(false)
 	const [clicked, setClicked] = useState(false)
