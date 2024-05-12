@@ -91,9 +91,11 @@ Plan:
     - [ ] redisplay it using stolen code from three-fiber-starter
 
 TheHowTFThisWorks:
-    <View /> = forwardRef(...)
-        <Three /> = <r3f.In /> = tunnel()
-            <fider/drei/View />     
+    <Layout />
+        <Scene /> = <r3f.Out /> = tunnel()
+            <View />
+                <Three /> = <r3f.In /> = tunnel()
+                    <fider/drei/View />     
 
 
 
