@@ -27,6 +27,7 @@ Next.js
     - https://www.youtube.com/watch?v=vCOSTG10Y4o
     - https://www.youtube.com/watch?v=vwSlYG7hFk0
     - https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI
+    - maximal server rendering possible
 
 
 
