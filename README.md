@@ -1,23 +1,42 @@
 # igor-boiko-portfolio-v2
 
-## TODO
-
-### prepare
+## like plan or something
 
 - [x] Install T3 template (https://create.t3.gg/)
-- [x] Make it deploy (vercel)
-- [16/30] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
+- [x] Make it deploy (vercel) or die trying
+- [x] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
     - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
 - [x] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
+---
 - [x] integrate r3f in to T3
 - [x] stole fast r3f from three-fiber-starter
+    TheHowTFThisWorks:
+    <Layout />
+        <Scene /> = <r3f.Out /> = tunnel()
+            <View />
+                <Three /> = <r3f.In /> = tunnel()
+                    <fider/drei/View />     
+                        gotten;
+---
 - [x] drizzler db
-- [ ] try modal router thingy
+- [ ] add smooth scrolling to the pages (like stole it)
+- [ ] try modal router thingy with modal project window / its own tab
 - [ ] Prototype UI in figma or somwhere else
-- [ ] try chadui or similar thing
-- [ ] add smooth scrolling to the pages
-- [ ] try playsible
+- [ ] try chadui or similar thin
+---
+- [ ] try making buttons as 3d objects
+    <Link href="/any/place/where/i/will/be/able/to/plan/my/future" >  
+        <View >
+            <Groupe / >
+                <CursorLeaningBehaviour />
+                <ClickResponceBehaviour />
+                <ButtonThreeMesh icon="nuts" />
+- [ ] try playsible (what is it btw?)
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
+    - [ ] add gltf loading curtains
+    - [ ] split bg loading to 2 parts 
+        1) created from fiber objects and being generated offline 
+        2) being my .glb that is downloading from web
 
 
 
@@ -93,11 +112,5 @@ Plan:
     - [x] test how routing will work in standard fiber components
     - [x] redisplay it using stolen code from three-fiber-starter
 
-TheHowTFThisWorks:
-    <Layout />
-        <Scene /> = <r3f.Out /> = tunnel()
-            <View />
-                <Three /> = <r3f.In /> = tunnel()
-                    <fider/drei/View />     
 
 
