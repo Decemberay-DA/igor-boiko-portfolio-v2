@@ -42,12 +42,12 @@
 
 ### learn
 
-- https://www.youtube.com/watch?v=PbjHxIuHduU
+- The BEST Stack For Your Next Project - https://www.youtube.com/watch?v=PbjHxIuHduU
 
 Next.js
-    - https://www.youtube.com/watch?v=vCOSTG10Y4o
-    - https://www.youtube.com/watch?v=vwSlYG7hFk0
-    - https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI
+    - [x]  https://www.youtube.com/watch?v=vCOSTG10Y4o
+    <!-- - https://www.youtube.com/watch?v=vwSlYG7hFk0
+    - https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI -->
     - maximal server rendering possible
 
 
@@ -76,7 +76,7 @@ Inspiration:
     - holy shit look on this fricking parallax effect omg - https://tympanus.net/Development/ImageToContent/
     - gl image effects - https://tympanus.net/Development/RevealingWebGLImages/
     - glass dispersion - https://tympanus.net/Tutorials/WebGLLensRefraction/
-    - scroll + scroll to sections buttons - https://tympanus.net/Tutorials/the-substance/#01
+    - scroll + scroll + SCROLL + scroll to sections buttons - https://tympanus.net/Tutorials/the-substance/#01
     - scroll + image parallsx - https://tympanus.net/Tutorials/SmoothScrollAnimations/
     - cool menu navifation stuff - https://tympanus.net/Blueprints/PageStackNavigation/
     - offcanvas menu - https://tympanus.net/Development/OffCanvasMenuEffects/index.html#
