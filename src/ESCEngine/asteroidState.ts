@@ -6,7 +6,7 @@ import { THREE } from "~/exp"
 export type Asteroid = {
 	position: THREE.Vector3
 	velocity: THREE.Vector3
-	rotation: THREE.Quaternion
+	rotation: THREE.Euler
 }
 
 /* Create a Miniplex world that holds our entities */
@@ -21,7 +21,7 @@ const createSwarm = (ammouns: number = 123) => {
 		const Asteroid = asteroidWorld.add({
 			position: new THREE.Vector3(Math.random() * 100, Math.random() * 100, Math.random() * 100),
 			velocity: new THREE.Vector3(0, 0, 0),
-			rotation: new THREE.Quaternion(),
+			rotation: new THREE.Euler(),
 		})
 	}
 }
@@ -32,7 +32,7 @@ const gravity = ({ position }: Asteroid, gravityVector: THREE.Vector3) => {
 	position.add(gravityVector)
 }
 const randomRotation = ({ rotation }: Asteroid) => {
-	rotation.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.random() * Math.PI * 2)
+	rotation.set(Math.random() * 360, Math.random() * 360, Math.random() * 360)
 }
 
 /* Create a bunch of systems: */

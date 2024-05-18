@@ -5,6 +5,7 @@ import { THREE } from "~/exp"
 import View from "~/components/canvas/View"
 import { useFrame } from "@react-three/fiber"
 import { dynamicCommon } from "~/components/dinamicImports/3dModels"
+import { getRandomColor } from "~/helpers/Extensions/THREEEX"
 
 const Common = dynamicCommon()
 
@@ -29,20 +30,24 @@ export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button
 			asteroidWorld.entities[Math.floor(Math.random() * asteroidWorld.entities.length)]!
 		asteroidWorld.remove(randomEntity)
 	}
-	return <button onClick={killRanbomEntity} {...rest}></button>
+	return (
+		<button
+			onClick={killRanbomEntity}
+			{...rest}
+			className="bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded">
+			kill random entity
+		</button>
+	)
 }
 
 type AsteroidProps = {
 	data: Asteroid
 } & React.ComponentProps<"mesh">
-
 export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 	return (
-		<mesh>
-			{/* <primitive object={sphere.current}> */}
+		<mesh position={data.position} rotation={data.rotation}>
 			<sphereGeometry args={[0.5, 32, 32]} />
-			<meshStandardMaterial color="hotpink" />
-			{/* </primitive> */}
+			<meshStandardMaterial color={getRandomColor()} />
 		</mesh>
 	)
 }
@@ -51,7 +56,7 @@ export const AsteroidView = () => {
 	const allAsteroids = asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))
 	return (
 		<>
-			<View className="relative h-36 w-full">
+			<View orbit className="relative h-36 w-full">
 				{allAsteroids}
 				<Common color={"#000000"} />
 			</View>
