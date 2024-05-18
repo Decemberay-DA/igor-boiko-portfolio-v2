@@ -47,12 +47,30 @@ const randomRotationSystem = () => {
 	}
 }
 
+// every frame systems update loop
+let frameCount = 0
+const systemUpdateLoop = () => {
+	lolGravitySystem()
+	randomRotationSystem()
+
+	frameCount++
+	if (frameCount % 10 === 0) {
+		console.log("esc frame count:", frameCount)
+	}
+
+	requestAnimationFrame(systemUpdateLoop)
+}
+export const startSystemUpdateLoop = () => {
+	console.log("start system update loop for esc engine")
+	systemUpdateLoop()
+}
+
 /* test deleting random entity on SPACE key press */
 world.onEntityAdded.subscribe((e) => {
 	console.log(`world of asteroids, added new entity:`, e)
 })
 world.onEntityRemoved.subscribe((e) => {
-	console.log("world of asteroids, removed entity:", e)
+	console.log(`world of asteroids, removed an entity:`, e)
 })
 
 document.addEventListener("keydown", (e) => {

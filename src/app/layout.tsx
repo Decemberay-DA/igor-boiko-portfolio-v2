@@ -3,6 +3,7 @@ import "~/styles/globals.css"
 import { Layout } from "~/components/dom/Layout"
 import { Header } from "~/components/Header"
 import Head from "~/app/head"
+import { startSystemUpdateLoop } from "~/ESCEngine/asteroidState"
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -16,6 +17,11 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	{
+		// test esc engine
+		startSystemUpdateLoop()
+	}
+
 	return (
 		<html lang="en" className="antialiased">
 			<Head />
