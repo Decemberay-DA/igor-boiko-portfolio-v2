@@ -20,6 +20,7 @@
 ---
 - [x] drizzler db
 - [ ] add smooth scrolling to the pages (like stole it)
+- [ ] prototype stuff in pixso da
 - [ ] try modal router thingy with modal project window / its own tab
 - [ ] Prototype UI in figma or somwhere else
 - [ ] try chadui or similar thin
@@ -32,6 +33,8 @@
                 <ClickResponceBehaviour />
                 <ButtonThreeMesh icon="nuts" />
 - [ ] try playsible (what is it btw?)
+- [ ] ESCEngine
+    - [ ] Starts boiding on bg
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
     - [ ] add gltf loading curtains
     - [ ] split bg loading to 2 parts 
