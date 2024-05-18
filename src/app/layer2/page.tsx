@@ -2,7 +2,7 @@ import Link from "next/link"
 import DBDoodes from "../../components/_test/DBDoodes"
 import { getAllDoodesFromDB } from "~/server/queries"
 
-import { dinBlob, dinCommon, dinView } from "~/components/dinamicImports/3dModels"
+import { dynamicBlob, dynamicCommon, dynamicView } from "~/components/dinamicImports/3dModels"
 import dynamic from "next/dynamic"
 
 const HookedThing = dynamic(() => import("~/components/myFirstFrickingReactComponentsOMG/HookedThing"), {
@@ -14,9 +14,9 @@ const HookedThingReferenced = dynamic(
 		ssr: false,
 	},
 )
-const Blob = dinBlob()
-const Common = dinCommon()
-const View = dinView()
+const Blob = dynamicBlob()
+const Common = dynamicCommon()
+const View = dynamicView()
 
 export default async function Layer2Page() {
 	return (

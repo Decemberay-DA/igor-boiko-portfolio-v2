@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		/* Like idk like ok error messages maybe plz */
-		"sourceMap": true,
+		// "sourceMap": true,
 
 		/* Base Options: */
 		"esModuleInterop": true,

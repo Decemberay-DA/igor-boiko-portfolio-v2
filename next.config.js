@@ -5,10 +5,6 @@
 await import("./src/env.js")
 
 /** @type {import("next").NextConfig} */
-// const config = {};
-const config = {
-	// DONT FOREGET TO DISABLE IN PRODUCTION hahaha
-	// sourceMaps: true,
-}
+const config = {}
 
 export default config
