@@ -31,10 +31,7 @@ export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button
 		asteroidWorld.remove(randomEntity)
 	}
 	return (
-		<button
-			onClick={killRanbomEntity}
-			{...rest}
-			className="bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded">
+		<button onClick={killRanbomEntity} {...rest}>
 			kill random entity
 		</button>
 	)
@@ -56,11 +53,11 @@ export const AsteroidView = () => {
 	const allAsteroids = asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))
 	return (
 		<>
-			<View orbit className="relative h-36 w-full">
+			<View orbit className="relative h-[400px] w-full">
 				{allAsteroids}
-				<Common color={"#000000"} />
+				<Common color={"#156545"} />
 			</View>
-			<KillRanbomEntityButton />
+			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />
 		</>
 	)
 }

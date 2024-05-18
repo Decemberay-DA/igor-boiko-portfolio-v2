@@ -15,11 +15,12 @@ export const asteroidWorld = new World<Asteroid>()
 /* Create and export React bindings */
 // here NEXTjs error
 // export const AsteroidsECS = createReactAPI(world)
-
+const _genRange = 5
+const _genPose = () => (Math.random() - 0.5) * _genRange
 const createSwarm = (ammouns: number = 123) => {
 	for (let i = 0; i < ammouns; i++) {
 		const Asteroid = asteroidWorld.add({
-			position: new THREE.Vector3(Math.random() * 100, Math.random() * 100, Math.random() * 100),
+			position: new THREE.Vector3(_genPose(), _genPose(), _genPose()),
 			velocity: new THREE.Vector3(0, 0, 0),
 			rotation: new THREE.Euler(),
 		})
@@ -37,8 +38,8 @@ const randomRotation = ({ rotation }: Asteroid) => {
 
 /* Create a bunch of systems: */
 const lolGravitySystem = () => {
+	const gravityVector = new THREE.Vector3(0, Math.sin(performance.now() * 0.5) * 0.9, 0)
 	for (const e of asteroidWorld.entities) {
-		const gravityVector = new THREE.Vector3(0, Math.sin(performance.now() * 0.5) * 9, 0)
 		gravity(e, gravityVector)
 	}
 }
@@ -61,7 +62,11 @@ const systemUpdateLoop = () => {
 
 	requestAnimationFrame(systemUpdateLoop)
 }
+
+let isSystemUpdateLoopRunning = false
 export const startSystemUpdateLoop = () => {
+	if (isSystemUpdateLoopRunning) return
 	console.log("start system update loop for esc engine")
 	systemUpdateLoop()
+	isSystemUpdateLoopRunning = true
 }
