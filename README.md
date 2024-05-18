@@ -65,7 +65,6 @@ Optional:
     - [ ] boid motion for stars
 
 
-
 ### userfull stuff
 
 Guides:
@@ -84,6 +83,27 @@ Inspiration:
     - cool menu navifation stuff - https://tympanus.net/Blueprints/PageStackNavigation/
     - offcanvas menu - https://tympanus.net/Development/OffCanvasMenuEffects/index.html#
 
+### resourses
+
+- color aligner - https://colors.eva.design/
+- contraster - https://colourcontrast.cc/020000/2effa4
+- SVG icons -https://heroicons.com/
+- https://www.fontsinthewild.com/
+- fontninja - font reaper
+
+- navbar - https://www.navbar.gallery/
+
+- best collection - https://godly.website/
+- https://land-book.com/
+- mobile ui - https://mobbin.com/browse/ios/apps
+- https://www.inspovault.com/
+- dark mode - https://www.dark.design/
+
+- footer - https://www.footer.design/
+
+- optimize image size - https://squoosh.app/
+
+---
 
 #### modal thingy
 
