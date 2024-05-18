@@ -12,9 +12,6 @@ export type Asteroid = {
 /* Create a Miniplex world that holds our entities */
 export const asteroidWorld = new World<Asteroid>()
 
-/* Create and export React bindings */
-// here NEXTjs error
-// export const AsteroidsECS = createReactAPI(world)
 const _genRange = 5
 const _genPose = () => (Math.random() - 0.5) * _genRange
 const createSwarm = (ammouns: number = 123) => {
@@ -28,34 +25,38 @@ const createSwarm = (ammouns: number = 123) => {
 }
 createSwarm(50)
 
-/* Create functions that perform actions on entities: */
-const gravity = ({ position }: Asteroid, gravityVector: THREE.Vector3) => {
-	// position.add(gravityVector)
-	position.setZ(gravityVector.z)
-}
-const randomRotation = ({ rotation }: Asteroid) => {
-	rotation.set(Math.random() * 360, Math.random() * 360, Math.random() * 360)
-}
-
 /* Create a bunch of systems: */
-const lolGravitySystem = () => {
-	const gravityVector = new THREE.Vector3(0, 0, Math.sin(performance.now() * 0.001) * 0.5)
-	for (const e of asteroidWorld.entities) {
-		gravity(e, gravityVector)
+const velocitySystem = () => {
+	const velocityFading = 0.99
+	for (const a of asteroidWorld.entities) {
+		a.position.add(a.velocity)
+		a.velocity.multiplyScalar(velocityFading)
 	}
-	console.log(`gravitated asteroid id:0 = ${asteroidWorld.entities[0]?.position.toArray()}`)
 }
-const randomRotationSystem = () => {
-	for (const e of asteroidWorld.entities) {
-		randomRotation(e)
+const pointGravitySystem = () => {
+	const gravitationPoint = new THREE.Vector3(0, 0, 0)
+	const minGravityMagnitude = 0.0001
+	const maxGravityMagnitude = 0.009
+	for (const a of asteroidWorld.entities) {
+		const direction = gravitationPoint.clone().sub(a.position).normalize()
+
+		const distance = gravitationPoint.distanceTo(a.position)
+		const gravityMagnitude = 0.005 / distance
+
+		const gravityMagnitude2 = Math.max(
+			minGravityMagnitude,
+			Math.min(maxGravityMagnitude, gravityMagnitude),
+		)
+
+		a.velocity.add(direction.multiplyScalar(gravityMagnitude2))
 	}
 }
 
 // every frame systems update loop
 let frameCount = 0
 const systemUpdateLoop = () => {
-	lolGravitySystem()
-	randomRotationSystem()
+	velocitySystem()
+	pointGravitySystem()
 
 	frameCount++
 	if (frameCount % 100 === 0) {

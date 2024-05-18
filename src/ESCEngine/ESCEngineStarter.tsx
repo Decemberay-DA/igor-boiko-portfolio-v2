@@ -1,13 +1,21 @@
 "use client"
-import React, { useRef } from "react"
+import React, { useMemo, useRef } from "react"
 import { Asteroid, asteroidWorld, startSystemUpdateLoop } from "./asteroidState"
 import { THREE } from "~/exp"
 import View from "~/components/canvas/View"
 import { useFrame } from "@react-three/fiber"
 import { dynamicCommon } from "~/components/dinamicImports/3dModels"
 import { getRandomColor } from "~/helpers/Extensions/THREEEX"
+import createReactAPI from "miniplex-react"
 
+/**
+ *
+ */
 const Common = dynamicCommon()
+export const AsteroidsECS = createReactAPI(asteroidWorld)
+/**
+ *
+ */
 
 export default function ESCEngineStarter() {
 	console.log("created jsx element for starting esc engine")
@@ -50,21 +58,22 @@ export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 
 	return (
 		<mesh ref={meshRef} position={data.position} rotation={data.rotation} {...rest}>
-			<sphereGeometry args={[0.5, 32, 32]} />
+			<boxGeometry args={[0.1, 0.1, 0.1]} />
 			<meshStandardMaterial color={getRandomColor()} />
 		</mesh>
 	)
 }
 
 export const AsteroidView = () => {
-	// const allAsteroids = asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))
+	// const asteroidEntities = asteroidWorld.entities
+	const asteroidComponents = useMemo(() => {
+		return asteroidWorld.entities.map((a) => <AsteriodModel key={asteroidWorld.id(a)} data={a} />)
+	}, [asteroidWorld.entities])
+
 	return (
 		<>
 			<View orbit className="relative h-[400px] w-full">
-				{/* {asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))} */}
-				<AsteriodModel data={asteroidWorld.entities[0]!} />
-				<AsteriodModel data={asteroidWorld.entities[1]!} />
-				<AsteriodModel data={asteroidWorld.entities[2]!} />
+				{asteroidComponents}
 				<Common color={"#156545"} />
 			</View>
 			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />
