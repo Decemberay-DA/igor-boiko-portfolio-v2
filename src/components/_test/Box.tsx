@@ -4,10 +4,11 @@ import React, { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { THREE } from "~/exp"
 
-export default function TestBox({ ...props }) {
+export default function TestBox({ ...props }: React.ComponentProps<"mesh">) {
 	const ref = useRef<THREE.Mesh>(null!)
 	const [hovered, setHovered] = useState(false)
 	const [clicked, setClicked] = useState(false)
+	
 	useFrame((state, delta) => (ref.current.rotation.x += delta))
 
 	return (

@@ -41,8 +41,15 @@ type AsteroidProps = {
 	data: Asteroid
 } & React.ComponentProps<"mesh">
 export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
+	const meshRef = useRef<THREE.Mesh>(null)
+
+	useFrame((state, frame) => {
+		if (!meshRef.current) return
+		meshRef.current.position.copy(data.position)
+	})
+
 	return (
-		<mesh position={data.position} rotation={data.rotation}>
+		<mesh ref={meshRef} position={data.position} rotation={data.rotation} {...rest}>
 			<sphereGeometry args={[0.5, 32, 32]} />
 			<meshStandardMaterial color={getRandomColor()} />
 		</mesh>
@@ -50,11 +57,14 @@ export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 }
 
 export const AsteroidView = () => {
-	const allAsteroids = asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))
+	// const allAsteroids = asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))
 	return (
 		<>
 			<View orbit className="relative h-[400px] w-full">
-				{allAsteroids}
+				{/* {asteroidWorld.entities.map((a) => AsteriodModel({ data: a }))} */}
+				<AsteriodModel data={asteroidWorld.entities[0]!} />
+				<AsteriodModel data={asteroidWorld.entities[1]!} />
+				<AsteriodModel data={asteroidWorld.entities[2]!} />
 				<Common color={"#156545"} />
 			</View>
 			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />

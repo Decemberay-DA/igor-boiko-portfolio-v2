@@ -30,7 +30,8 @@ createSwarm(50)
 
 /* Create functions that perform actions on entities: */
 const gravity = ({ position }: Asteroid, gravityVector: THREE.Vector3) => {
-	position.add(gravityVector)
+	// position.add(gravityVector)
+	position.setZ(gravityVector.z)
 }
 const randomRotation = ({ rotation }: Asteroid) => {
 	rotation.set(Math.random() * 360, Math.random() * 360, Math.random() * 360)
@@ -38,10 +39,11 @@ const randomRotation = ({ rotation }: Asteroid) => {
 
 /* Create a bunch of systems: */
 const lolGravitySystem = () => {
-	const gravityVector = new THREE.Vector3(0, Math.sin(performance.now() * 0.5) * 0.9, 0)
+	const gravityVector = new THREE.Vector3(0, 0, Math.sin(performance.now() * 0.001) * 0.5)
 	for (const e of asteroidWorld.entities) {
 		gravity(e, gravityVector)
 	}
+	console.log(`gravitated asteroid id:0 = ${asteroidWorld.entities[0]?.position.toArray()}`)
 }
 const randomRotationSystem = () => {
 	for (const e of asteroidWorld.entities) {
