@@ -10,14 +10,15 @@ export type Asteroid = {
 }
 
 /* Create a Miniplex world that holds our entities */
-const world = new World<Asteroid>()
+export const asteroidWorld = new World<Asteroid>()
 
 /* Create and export React bindings */
-export const AsteroidsECS = createReactAPI(world)
+// here NEXTjs error
+// export const AsteroidsECS = createReactAPI(world)
 
 const createSwarm = (ammouns: number = 123) => {
 	for (let i = 0; i < ammouns; i++) {
-		const Asteroid = world.add({
+		const Asteroid = asteroidWorld.add({
 			position: new THREE.Vector3(Math.random() * 100, Math.random() * 100, Math.random() * 100),
 			velocity: new THREE.Vector3(0, 0, 0),
 			rotation: new THREE.Quaternion(),
@@ -36,13 +37,13 @@ const randomRotation = ({ rotation }: Asteroid) => {
 
 /* Create a bunch of systems: */
 const lolGravitySystem = () => {
-	for (const e of world.entities) {
+	for (const e of asteroidWorld.entities) {
 		const gravityVector = new THREE.Vector3(0, Math.sin(performance.now() * 0.5) * 9, 0)
 		gravity(e, gravityVector)
 	}
 }
 const randomRotationSystem = () => {
-	for (const e of world.entities) {
+	for (const e of asteroidWorld.entities) {
 		randomRotation(e)
 	}
 }
@@ -65,17 +66,3 @@ export const startSystemUpdateLoop = () => {
 	systemUpdateLoop()
 }
 
-/* test deleting random entity on SPACE key press */
-world.onEntityAdded.subscribe((e) => {
-	console.log(`world of asteroids, added new entity:`, e)
-})
-world.onEntityRemoved.subscribe((e) => {
-	console.log(`world of asteroids, removed an entity:`, e)
-})
-
-document.addEventListener("keydown", (e) => {
-	if (e.key === "Space") {
-		const randomEntity = world.entities[Math.floor(Math.random() * world.entities.length)]!
-		world.remove(randomEntity)
-	}
-})

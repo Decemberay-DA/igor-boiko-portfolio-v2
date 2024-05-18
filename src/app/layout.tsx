@@ -4,6 +4,7 @@ import { Layout } from "~/components/dom/Layout"
 import { Header } from "~/components/Header"
 import Head from "~/app/head"
 import { startSystemUpdateLoop } from "~/ESCEngine/asteroidState"
+import { dynamicESCEngineStarter } from "~/ESCEngine/dynamic"
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -16,12 +17,9 @@ export const metadata = {
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	{
-		// test esc engine
-		startSystemUpdateLoop()
-	}
+const ESCEngineStarter = dynamicESCEngineStarter()
 
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className="antialiased">
 			<Head />
@@ -33,6 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 					{/* tmp footer actually */}
 					<Header className="bottom-0 sticky" />
+					<ESCEngineStarter />
 				</Layout>
 			</body>
 		</html>
