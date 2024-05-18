@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { TestVizDataList } from "../components/myFirstFrickingReactComponentsOMG/testDBData"
 import TestThreeSceneCanvas from "../components/_test/TestThreeScene"
+import { dynamicAsteroidView } from "~/ESCEngine/dynamic"
+
+const AsteroidView = dynamicAsteroidView()
 
 export default async function HomePage() {
 	return (
@@ -35,6 +38,9 @@ export default async function HomePage() {
 				<div className="w-full h-fit flex flex-col gap-4">
 					<div className="w-full h-fit bg-slate-900">
 						<TestThreeSceneCanvas />
+					</div>
+					<div className="w-full h-fit bg-slate-900">
+						<AsteroidView />
 					</div>
 					<TestVizDataList />
 				</div>

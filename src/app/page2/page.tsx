@@ -1,7 +1,7 @@
-import { dinBlob, dinCommon, dinView } from "~/components/dinamicImports/3dModels"
-const Blob = dinBlob()
-const Common = dinCommon()
-const View = dinView()
+import { dynamicBlob, dynamicCommon, dynamicView } from "~/components/dinamicImports/3dModels"
+const Blob = dynamicBlob()
+const Common = dynamicCommon()
+const View = dynamicView()
 
 export default function Page() {
 	return (

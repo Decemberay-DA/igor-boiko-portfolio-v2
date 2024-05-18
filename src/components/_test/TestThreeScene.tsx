@@ -2,12 +2,12 @@
 
 import React from "react"
 import View from "../canvas/View"
-import { dinBlob, dinCommon } from "../dinamicImports/3dModels"
+import { dynamicBlob, dynamicCommon } from "../dinamicImports/3dModels"
 
 import dynamic from "next/dynamic"
 const TestBox = dynamic(() => import("@/components/_test/Box"), { ssr: false })
-const Common = dinCommon()
-const Blob = dinBlob()
+const Common = dynamicCommon()
+const Blob = dynamicBlob()
 
 /**
  * default solution to creating a canvas for threejs

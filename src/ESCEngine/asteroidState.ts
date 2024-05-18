@@ -55,8 +55,8 @@ const systemUpdateLoop = () => {
 	randomRotationSystem()
 
 	frameCount++
-	if (frameCount % 10 === 0) {
-		console.log("esc frame count:", frameCount)
+	if (frameCount % 100 === 0) {
+		console.log(`esc frame count: ${frameCount} | entities: ${asteroidWorld.entities.length}`)
 	}
 
 	requestAnimationFrame(systemUpdateLoop)
@@ -65,4 +65,3 @@ export const startSystemUpdateLoop = () => {
 	console.log("start system update loop for esc engine")
 	systemUpdateLoop()
 }
-
