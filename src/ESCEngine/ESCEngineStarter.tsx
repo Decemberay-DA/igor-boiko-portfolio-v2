@@ -1,6 +1,6 @@
 "use client"
 import React, { useMemo, useRef } from "react"
-import { Asteroid, asteroidWorld, startSystemUpdateLoop } from "./asteroidState"
+import { Asteroid, asteroidWorld, startSystemUpdateLoop } from "./asteroidESCGame"
 import { THREE } from "~/exp"
 import View from "~/components/canvas/View"
 import { useFrame } from "@react-three/fiber"

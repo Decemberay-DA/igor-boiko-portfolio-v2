@@ -3,7 +3,7 @@ import "~/styles/globals.css"
 import { Layout } from "~/components/dom/Layout"
 import { Header } from "~/components/Header"
 import Head from "~/app/head"
-import { startSystemUpdateLoop } from "~/ESCEngine/asteroidState"
+import { startSystemUpdateLoop } from "~/ESCEngine/asteroidESCGame"
 import { dynamicESCEngineStarter } from "~/ESCEngine/dynamic"
 
 const inter = Inter({

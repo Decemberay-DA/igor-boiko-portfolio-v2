@@ -3,12 +3,17 @@ import { World } from "miniplex"
 import createReactAPI from "miniplex-react"
 import { THREE } from "~/exp"
 
-/* Our entity type */
-export type Asteroid = {
+export type IDynamicSpatialPoint = {
 	position: THREE.Vector3
-	velocity: THREE.Vector3
 	rotation: THREE.Euler
 }
+export type IDynamicTemporalPoint = {
+	velocity: THREE.Vector3
+}
+
+/* Our entity type */
+// this is component bwt
+export type Asteroid = IDynamicSpatialPoint & IDynamicTemporalPoint
 
 /* Create a Miniplex world that holds our entities */
 export const asteroidWorld = new World<Asteroid>()
@@ -45,36 +50,31 @@ const velocitySmoothCap = (max: number) => (v: THREE.Vector3) => {
 }
 
 // SYSTEMS
-const lambdaSystem =
-	<TEntity>(fn: (a: TEntity) => void) =>
-	(entities: TEntity[]) => {
-		for (const entity of entities) {
-			fn(entity)
-		}
-		return entities
-	}
-const velocitySystem = (entities: Asteroid[]) => {
-	var velocityFading = 0.99
+const velocityApplySystem = (entities: World<Asteroid>) => {
 	for (const entity of entities) {
 		entity.position.add(entity.velocity)
+	}
+	return entities
+}
+const velocityFadeSystem = (entities: World<Asteroid>) => {
+	var velocityFading = 0.99
+	for (const entity of entities) {
 		entity.velocity.multiplyScalar(velocityFading)
 	}
 	return entities
 }
-const distanceClampSystem = (entities: Asteroid[]) => {
+const distanceClampSystem = (entities: World<Asteroid>) => {
 	var centerPoint = new THREE.Vector3(0, 0, 0)
 	var radius = 2
 	for (const entity of entities) {
 		const distance = centerPoint.distanceTo(entity.position)
 		if (distance > radius) {
-			// const direction = centerPoint.clone().sub(entity.position).normalize().multiplyScalar(radius)
 			entity.velocity.set(0, 0, 0)
-			// entity.position.copy(direction.multiplyScalar(-1))
 		}
 	}
 	return entities
 }
-const pointGravitySystem = (entities: Asteroid[]) => {
+const pointGravitySystem = (entities: World<Asteroid>) => {
 	var gravitationPoint = new THREE.Vector3(0, 0, 0)
 	var minGravityMagnitude = 0.0001
 	var maxGravityMagnitude = 0.009
@@ -93,7 +93,7 @@ const pointGravitySystem = (entities: Asteroid[]) => {
 	}
 	return entities
 }
-const keepDistanceFromEachOtherSystem = (entities: Asteroid[]) => {
+const keepDistanceFromEachOtherSystem = (entities: World<Asteroid>) => {
 	var minDistance = 0.1
 	for (const entity of entities) {
 		for (const naighbour of entities) {
@@ -121,12 +121,14 @@ const keepDistanceFromEachOtherSystem = (entities: Asteroid[]) => {
 let frameCount = 0
 const systemUpdateLoop = () => {
 	pipe(
-		asteroidWorld.entities,
+		asteroidWorld,
+		// physycks
 		pointGravitySystem,
 		keepDistanceFromEachOtherSystem,
 		distanceClampSystem,
-		velocitySystem,
-		lambdaSystem((a) => velocitySmoothCap(0.5)(a.velocity)),
+		// velocity
+		velocityApplySystem,
+		velocityFadeSystem,
 	)
 
 	frameCount++
