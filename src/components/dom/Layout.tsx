@@ -5,6 +5,9 @@ import { dinScene } from "../dinamicImports/htmlElements"
 
 const Scene = dinScene()
 
+/**
+ * base of fast threejs canvas
+ */
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
 	const ref = useRef<HTMLDivElement>(null)
 

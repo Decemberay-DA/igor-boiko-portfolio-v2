@@ -2,7 +2,7 @@
 // 2 - add <ScrollTicker /> wherever in the canvas
 // 3 - enjoy
 import { addEffect, useFrame } from "@react-three/fiber"
-import Lenis from "@studio-freight/lenis"
+// import Lenis from "@studio-freight/lenis"
 import { useRef, useEffect } from "react"
 import { MathUtils } from "three"
 
@@ -15,27 +15,27 @@ export default function Scroll({ children }: { children: React.ReactNode }) {
 	const content = useRef<HTMLDivElement>(null)
 	const wrapper = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const lenis = new Lenis({
-			wrapper: wrapper.current!,
-			content: content.current!,
-			duration: 1.2,
-			// https://www.desmos.com/calculator/brs54l4xou
-			easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-			touchMultiplier: 2,
-			infinite: false,
-		})
+	// useEffect(() => {
+	// 	const lenis = new Lenis({
+	// 		wrapper: wrapper.current!,
+	// 		content: content.current!,
+	// 		duration: 1.2,
+	// 		// https://www.desmos.com/calculator/brs54l4xou
+	// 		easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+	// 		touchMultiplier: 2,
+	// 		infinite: false,
+	// 	})
 
-		lenis.on("scroll", ({ scroll, progress }: { scroll: number; progress: number }) => {
-			state.top = scroll
-			state.progress = progress
-		})
-		const effectSub = addEffect((time) => lenis.raf(time))
-		return () => {
-			effectSub()
-			lenis.destroy()
-		}
-	}, [])
+	// 	lenis.on("scroll", ({ scroll, progress }: { scroll: number; progress: number }) => {
+	// 		state.top = scroll
+	// 		state.progress = progress
+	// 	})
+	// 	const effectSub = addEffect((time) => lenis.raf(time))
+	// 	return () => {
+	// 		effectSub()
+	// 		lenis.destroy()
+	// 	}
+	// }, [])
 
 	return (
 		<div

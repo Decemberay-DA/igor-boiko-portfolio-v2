@@ -1,5 +1,4 @@
 import React from "react"
-import { THREE } from "~/exp"
 
 let scrollState = {
 	realScroll: 0,
@@ -9,16 +8,6 @@ let scrollState = {
 export const useScrollState = () => {
 	return scrollState
 }
-
-const GetSmoothedScroll = (nextScroll: number, smoothing: number) => {
-	return THREE.MathUtils.lerp(scrollState.smoothedScroll, nextScroll, smoothing * 0.1)
-}
-
-// // every frame update to get smooth smoothed scroll
-// requestAnimationFrame(() => {
-//     // scrolledState.smoothedScroll = GetSmoothedScroll(scrolledState.realScroll, 0.1) 
-// }
-
 
 /**
  * captures scroll and puts its value to the scroll state
