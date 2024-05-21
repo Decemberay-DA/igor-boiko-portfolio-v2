@@ -1,12 +1,13 @@
 "use client"
 import React, { useMemo, useRef } from "react"
-import { Asteroid, asteroidWorld, startSystemUpdateLoop } from "./asteroidESCGame"
+import { asteroidWorld, startSystemUpdateLoop } from "./asteroidESCGame"
 import { THREE } from "~/exp"
 import View from "~/components/canvas/View"
 import { useFrame } from "@react-three/fiber"
 import { dynamicCommon } from "~/components/dinamicImports/3dModels"
 import { getRandomColor } from "~/helpers/Extensions/THREEEX"
 import createReactAPI from "miniplex-react"
+import { Omega } from "./Omega"
 
 /**
  *
@@ -46,18 +47,23 @@ export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button
 }
 
 type AsteroidProps = {
-	data: Asteroid
+	data: Omega
 } & React.ComponentProps<"mesh">
 export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
 
 	useFrame((state, frame) => {
 		if (!meshRef.current) return
-		meshRef.current.position.copy(data.position)
+		meshRef.current.position.copy(data.SpatialTransforms!.position)
 	})
 
 	return (
-		<mesh ref={meshRef} position={data.position} rotation={data.rotation} {...rest}>
+		<mesh
+			ref={meshRef}
+			position={data.SpatialTransforms!.position}
+			rotation={data.SpatialTransforms!.rotation}
+			scale={data.SpatialTransforms!.scale}
+			{...rest}>
 			<boxGeometry args={[0.1, 0.1, 0.1]} />
 			<meshStandardMaterial color={getRandomColor()} />
 		</mesh>

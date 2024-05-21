@@ -1,6 +1,5 @@
 import { pipe } from "fp-ts/lib/function"
 import { World } from "miniplex"
-import createReactAPI from "miniplex-react"
 import { THREE } from "~/exp"
 import { Omega } from "./Omega"
 
@@ -12,13 +11,13 @@ const _getVector = (range: number) =>
 	new THREE.Vector3(_genPose() * range, _genPose() * range, _genPose() * range)
 const createSwarm = (ammouns: number = 123) => {
 	for (let i = 0; i < ammouns; i++) {
-		const Asteroid = asteroidWorld.add({})
-		asteroidWorld.addComponent(Asteroid, "SpatialTransforms", {
+		const entity = asteroidWorld.add({})
+		asteroidWorld.addComponent(entity, "SpatialTransforms", {
 			position: _getVector(5),
 			rotation: new THREE.Euler(),
 			scale: new THREE.Vector3(1, 1, 1),
 		})
-		asteroidWorld.addComponent(Asteroid, "Velocityable", {
+		asteroidWorld.addComponent(entity, "Velocityable", {
 			velocity: _getVector(0.04),
 		})
 	}
@@ -58,7 +57,7 @@ const velocityFadeSystem = (entities: World<Omega>) => {
 }
 const distanceClampSystem = (entities: World<Omega>) => {
 	var centerPoint = new THREE.Vector3(0, 0, 0)
-	var radius = 2
+	var radius = 6
 	for (const entity of entities.with("SpatialTransforms", "Velocityable")) {
 		const distance = centerPoint.distanceTo(entity.SpatialTransforms.position)
 		if (distance > radius) {
