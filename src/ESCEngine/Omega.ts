@@ -45,15 +45,14 @@ export type HTMLScrollTransforming = {
  * the ok solution for miniplex.
  *      - i have thoughtcrimed about rust & bevy
  */
-export type OmegaEntity = Partial<_OmegaEntity>
-type _OmegaEntity = {
-	SphereCollider: SphereCollider
-	Gravitation: Gravitation
-	SpatialMass: SpatialMass
-	Velocityable: Velocityable
-	SpatialTransforms: SpatialTransforms
-	SceneIdentificator: SceneIdentificator
-	THREESceneRepresentation: THREESceneRepresentation
-	HTMLSceneRepresentation: HTMLSceneRepresentation
-	HTMLScrollTransforming: HTMLScrollTransforming
+export type Omega = {
+	SphereCollider?: SphereCollider
+	Gravitation?: Gravitation
+	SpatialMass?: SpatialMass
+	Velocityable?: Velocityable
+	SpatialTransforms?: SpatialTransforms
+	SceneIdentificator?: SceneIdentificator
+	THREESceneRepresentation?: THREESceneRepresentation
+	HTMLSceneRepresentation?: HTMLSceneRepresentation
+	HTMLScrollTransforming?: HTMLScrollTransforming
 }
