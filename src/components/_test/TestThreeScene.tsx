@@ -16,14 +16,14 @@ const Blob = dynamicBlob()
 export default function TestThreeSceneCanvas({ ...props }) {
 	const r = Math.random() > 0.5
 	return r ? (
-		<View className="relative w-full h-32 " {...props}>
+		<View className="relative w-full h-full" {...props}>
 			<TestBox position={[-1.2, 0, 0]} />
 			<TestBox position={[1.2, 0, 0]} />
 			<TestBox position={[0, 0, 0]} />
 			<Common color={"#000000"} />
 		</View>
 	) : (
-		<View className="relative w-full h-32 " {...props}>
+		<View className="relative w-full h-full" {...props}>
 			<Blob position={[-1.2, 0, 0]} />
 			<Blob position={[1.2, 0, 0]} />
 			<Blob position={[0, 0, 0]} />

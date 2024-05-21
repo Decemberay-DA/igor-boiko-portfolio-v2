@@ -9,6 +9,23 @@ export default async function HomePage() {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
 			<div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+				{/* About me section */}
+				<div id="AboutMeSection" className="flex flex-col  h-96 w-full bg-violet-500">
+					<div className="h-full w-full grid grid-cols-2 ">
+						<div className="h-full w-full relative">
+							<p>Igor Boiko The Dev V2</p>
+							<p className="text-2xl font-bold">Igor Boiko The Dev V3</p>
+							<p className="text-2xl font-bold">Igor Boiko The Dev V4</p>
+							<p className="text-2xl font-bold">Igor Boiko The Dev V4</p>
+							<TestThreeSceneCanvas />
+						</div>
+						<div>
+							<AsteroidView />
+						</div>
+					</div>
+				</div>
+				{/* About me section */}
+
 				<h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
 					Create <span className="text-[hsl(280,100%,70%)]">T2</span> App
 				</h1>
