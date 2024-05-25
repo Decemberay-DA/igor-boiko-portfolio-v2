@@ -35,16 +35,16 @@ export const Block = ({ children, offset = 0, factor = 1, ...props }: BlockProps
 
 export const useBlock = () => {
 	const { sections, pages } = state
-	const { size, viewport } = useThree()
-	const offset = useContext(offsetContext)
-	const viewportWidth = viewport.width
-	const viewportHeight = viewport.height
-	const canvasWidth = viewportWidth
-	const canvasHeight = viewportHeight
-	const mobile = size.width < 700
-	const margin = canvasWidth * (mobile ? 0.2 : 0.1)
-	const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.6)
-	const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
+	const { size, viewport }  = useThree()
+	const offset              = useContext(offsetContext)
+	const viewportWidth       = viewport.width
+	const viewportHeight      = viewport.height
+	const canvasWidth         = viewportWidth
+	const canvasHeight        = viewportHeight
+	const mobile              = size.width < 700
+	const margin              = canvasWidth * (mobile ? 0.2 : 0.1)
+	const contentMaxWidth     = canvasWidth * (mobile ? 0.8 : 0.6)
+	const sectionHeight       = canvasHeight * ((pages - 1) / (sections - 1))
 
 	return {
 		viewport,

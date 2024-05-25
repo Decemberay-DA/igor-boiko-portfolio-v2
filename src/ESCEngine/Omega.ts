@@ -44,6 +44,7 @@ export type HTMLScrollTransforming = {
  * all possible components can be added to this object.
  * the ok solution for miniplex.
  *      - i have thoughtcrimed about rust & bevy
+ * @note - Omega and ECS engine is only used for the background logick, for HTML logick React is used
  */
 export type Omega = {
 	SphereCollider?: SphereCollider

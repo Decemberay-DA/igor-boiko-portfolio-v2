@@ -7,7 +7,7 @@ import { useRef, useEffect } from "react"
 import { MathUtils } from "three"
 
 const state = {
-	top: 0,
+	top     : 0,
 	progress: 0,
 }
 
@@ -43,14 +43,14 @@ export default function Scroll({ children }: { children: React.ReactNode }) {
 			style={{
 				position: "absolute",
 				overflow: "hidden",
-				width: "100%",
-				height: "100%",
-				top: 0,
+				width   : "100%",
+				height  : "100%",
+				top     : 0,
 			}}>
 			<div
 				ref={content}
 				style={{
-					position: "relative",
+					position : "relative",
 					minHeight: "200vh",
 				}}>
 				{children}

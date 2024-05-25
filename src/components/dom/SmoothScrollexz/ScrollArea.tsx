@@ -1,7 +1,7 @@
 import React from "react"
 
 let scrollState = {
-	realScroll: 0,
+	realScroll    : 0,
 	smoothedScroll: 0,
 }
 
