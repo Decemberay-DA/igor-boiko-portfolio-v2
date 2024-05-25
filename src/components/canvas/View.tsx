@@ -5,7 +5,7 @@ import { OrbitControls, View as ViewImpl } from "@react-three/drei"
 import { Three } from "~/helpers/components/Three"
 
 type ViewProps = {
-	children: React.ReactNode
+	children?: React.ReactNode
 	orbit?: boolean
 } & React.ComponentProps<"div">
 

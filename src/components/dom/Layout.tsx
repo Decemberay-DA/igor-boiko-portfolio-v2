@@ -7,6 +7,7 @@ const Scene = dinScene()
 
 /**
  * base of fast threejs canvas
+ * @depricated
  */
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
 	const ref = useRef<HTMLDivElement>(null)
