@@ -6,9 +6,10 @@ import { dynamicCommon, dynamicView } from "~/components/dinamicImports/3dModels
 import { asteroidWorld } from "~/ESCEngine/asteroidESCGame"
 import { dynamicAsteroidView } from "~/ESCEngine/dynamic"
 import { AsteriodModel } from "~/ESCEngine/ESCEngineStarter"
+import { OrbitControls, View } from "@react-three/drei"
 const AsteroidView = dynamicAsteroidView()
 const Common = dynamicCommon()
-const View = dynamicView()
+// const View = dynamicView()
 
 type SpaceThreeSceneProps = {
 	children?: React.ReactNode
@@ -26,15 +27,22 @@ export default function SpaceThreeScene({ children, ...rest }: SpaceThreeScenePr
 	// )
 	// const asteroidEntities = asteroidWorld.entities
 
-	const asteroidComponents = useMemo(() => {
-		return asteroidWorld.entities.map((a) => <AsteriodModel key={asteroidWorld.id(a)} data={a} />)
-	}, [asteroidWorld.entities])
+	// const asteroidComponents = useMemo(() => {
+	// 	return asteroidWorld.entities.map((a) => <AsteriodModel key={asteroidWorld.id(a)} data={a} />)
+	// }, [asteroidWorld.entities])
+
+	// return (
+	// 	<View orbit className="relative h-full w-full" {...rest}>
+	// 		{asteroidComponents}
+	// 		{children}
+	// 		<Common color={"#156545"} />
+	// 	</View>
+	// )
 
 	return (
-		<View orbit className="relative h-full w-full" {...rest}>
-			{asteroidComponents}
+		<View>
 			{children}
-			<Common color={"#156545"} />
+			<OrbitControls />
 		</View>
 	)
 }
