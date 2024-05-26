@@ -2,29 +2,16 @@
 
 ## like plan or something
 
-- [x] Install T3 template (https://create.t3.gg/)
-- [x] Make it deploy (vercel) or die trying
-- [x] Complete some git-based react intro course (https://github.com/Asabeneh/30-Days-Of-React)
-    - https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n
-- [x] Install react-three-next template (https://github.com/pmndrs/react-three-next?tab=readme-ov-file)
 ---
-- [x] integrate r3f in to T3
-- [x] stole fast r3f from three-fiber-starter
-    TheHowTFThisWorks:
-    <Layout />
-        <Scene /> = <r3f.Out /> = tunnel()
-            <View />
-                <Three /> = <r3f.In /> = tunnel()
-                    <fider/drei/View />     
-                        gotten;
----
-- [x] drizzler db
-- [ ] add smooth scrolling to the pages (like stole it)
 - [ ] prototype stuff in pixso da
-- [ ] try modal router thingy with modal project window / its own tab
-- [ ] Prototype UI in figma or somwhere else
-- [ ] try chadui or similar thin
+- [ ] html of base page without modals or other pages
+- [ ] ESCEngine and stuff on 3d bg
 ---
+
+## plan for later future
+
+- [ ] try modal router thingy with modal project window / its own tab
+- [ ] add animations with Framere Motion and css imaje parallax effect
 - [ ] try making buttons as 3d objects
     <Link href="/any/place/where/i/will/be/able/to/plan/my/future" >  
         <View >
@@ -32,9 +19,7 @@
                 <CursorLeaningBehaviour />
                 <ClickResponceBehaviour />
                 <ButtonThreeMesh icon="nuts" />
-- [ ] try playsible (what is it btw?)
-- [ ] ESCEngine
-    - [ ] Starts boiding on bg
+- [ ] add smooth scrolling to the pages (like stole it)
 - [ ] Use https://uploadthing-1m3c.vercel.app/ to upload .glb scene to it and load them to this website
     - [ ] add gltf loading curtains
     - [ ] split bg loading to 2 parts 
@@ -55,7 +40,7 @@ Next.js
 
 
 
-### build
+### unbuild
 
 Like:
     - [ ] old three scene with camera movement linked to html section
@@ -80,6 +65,7 @@ Inspiration:
     - glass dispersion - https://tympanus.net/Tutorials/WebGLLensRefraction/
     - scroll + scroll + SCROLL + scroll to sections buttons - https://tympanus.net/Tutorials/the-substance/#01
     - scroll + image parallsx - https://tympanus.net/Tutorials/SmoothScrollAnimations/
+    - complex elements animations - Framer Motion - https://www.youtube.com/watch?v=znbCa4Rr054
     - cool menu navifation stuff - https://tympanus.net/Blueprints/PageStackNavigation/
     - offcanvas menu - https://tympanus.net/Development/OffCanvasMenuEffects/index.html#
 
