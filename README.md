@@ -55,6 +55,9 @@ Optional:
 Guides:
     - Fiber guide - https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene
     - have a cool boid motion of stars made in ESC engine
+    - complex elements animations - Framer Motion - https://www.youtube.com/watch?v=znbCa4Rr054
+    - NEXTJS14 tut - https://www.youtube.com/watch?v=5QP0mvrJkiY
+    - NEXTJS14 ceo - https://www.youtube.com/watch?v=a2ovCcxXqNo
 
 Inspiration:
     - glass shader for three - https://tympanus.net/codrops/2021/10/27/creating-the-effect-of-transparent-glass-and-plastic-in-three-js/
@@ -65,7 +68,6 @@ Inspiration:
     - glass dispersion - https://tympanus.net/Tutorials/WebGLLensRefraction/
     - scroll + scroll + SCROLL + scroll to sections buttons - https://tympanus.net/Tutorials/the-substance/#01
     - scroll + image parallsx - https://tympanus.net/Tutorials/SmoothScrollAnimations/
-    - complex elements animations - Framer Motion - https://www.youtube.com/watch?v=znbCa4Rr054
     - cool menu navifation stuff - https://tympanus.net/Blueprints/PageStackNavigation/
     - offcanvas menu - https://tympanus.net/Development/OffCanvasMenuEffects/index.html#
 
