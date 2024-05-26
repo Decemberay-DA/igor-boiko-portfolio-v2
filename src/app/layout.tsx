@@ -34,9 +34,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					{/* tmp footer actually */}
 					<Header className="bottom-0 sticky" />
 					<ESCEngineStarter />
-					<div id="bg_div" className="absolute top-0 left-0 h-[900px] w-full opacity-50">
+					{/* <div id="bg_div" className="absolute top-0 left-0 h-[900px] w-full opacity-50">
 						<SpaceThreeScene />
-					</div>
+					</div> */}
 				</Layout>
 			</body>
 		</html>
