@@ -1,13 +1,14 @@
 "use client"
+
 import React, { useMemo, useRef } from "react"
 import { asteroidWorld, startSystemUpdateLoop } from "./asteroidESCGame"
 import { THREE } from "~/exp"
-import View from "~/components/canvas/View"
+import { cThreePresistentView as CThreePresistentView } from "~/components/ThreePresistense/cThreePresistentView"
 import { useFrame } from "@react-three/fiber"
 import { dynamicCommon } from "~/components/dinamicImports/3dModels"
-import { getRandomColor } from "~/helpers/Extensions/THREEEX"
 import createReactAPI from "miniplex-react"
-import { Omega } from "./Omega"
+import { ESCEntity } from "./ESCEntity"
+import { THREEEX } from "~/helpers/THREEEX"
 
 /**
  *
@@ -18,22 +19,14 @@ export const AsteroidsECS = createReactAPI(asteroidWorld)
  *
  */
 
-export default function ESCEngineStarter() {
+export const cESCEngineStarter = () => {
+	"use client"
 	console.log("created jsx element for starting esc engine")
-
 	startSystemUpdateLoop()
-
 	return null
 }
 
 export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button">) => {
-	/* test deleting random entity on SPACE key press */
-	asteroidWorld.onEntityAdded.subscribe((e) => {
-		console.log(`world of asteroids, added new entity:`, e)
-	})
-	asteroidWorld.onEntityRemoved.subscribe((e) => {
-		console.log(`world of asteroids, removed an entity:`, e)
-	})
 	const killRanbomEntity = () => {
 		const randomEntity =
 			asteroidWorld.entities[Math.floor(Math.random() * asteroidWorld.entities.length)]!
@@ -47,7 +40,7 @@ export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button
 }
 
 type AsteroidProps = {
-	data: Omega
+	data: ESCEntity
 } & React.ComponentProps<"mesh">
 export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 	const meshRef = useRef<THREE.Mesh>(null)
@@ -65,12 +58,13 @@ export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 			scale={data.SpatialTransforms!.scale}
 			{...rest}>
 			<boxGeometry args={[0.1, 0.1, 0.1]} />
-			<meshStandardMaterial color={getRandomColor()} />
+			<meshStandardMaterial color={THREEEX.newRandomColor()} />
 		</mesh>
 	)
 }
 
-export const AsteroidView = () => {
+export const cAsteroidView = () => {
+	"use client"
 	// const asteroidEntities = asteroidWorld.entities
 	const asteroidComponents = useMemo(() => {
 		return asteroidWorld.entities.map((a) => <AsteriodModel key={asteroidWorld.id(a)} data={a} />)
@@ -78,10 +72,10 @@ export const AsteroidView = () => {
 
 	return (
 		<>
-			<View orbit className="relative h-[400px] w-full">
+			<CThreePresistentView isOrbitControlsEnabeled className="relative h-[400px] w-full">
 				{asteroidComponents}
 				<Common color={"#156545"} />
-			</View>
+			</CThreePresistentView>
 			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />
 		</>
 	)

@@ -46,7 +46,7 @@ export type HTMLScrollTransforming = {
  *      - i have thoughtcrimed about rust & bevy
  * @note - Omega and ECS engine is only used for the background logick, for HTML logick React is used
  */
-export type Omega = {
+export type ESCEntity = {
 	SphereCollider?: SphereCollider
 	Gravitation?: Gravitation
 	SpatialMass?: SpatialMass
