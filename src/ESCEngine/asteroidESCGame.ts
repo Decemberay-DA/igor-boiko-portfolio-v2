@@ -1,10 +1,10 @@
 import { pipe } from "fp-ts/lib/function"
 import { World } from "miniplex"
 import { THREE } from "~/exp"
-import { Omega } from "./Omega"
+import { ESCEntity } from "./ESCEntity"
 
 /* Create a Miniplex world that holds our entities */
-export const asteroidWorld = new World<Omega>()
+export const asteroidWorld = new World<ESCEntity>()
 
 const _genPose = () => Math.random() - 0.5
 const _getVector = (range: number) =>
@@ -42,20 +42,20 @@ const velocitySmoothCap = (max: number) => (v: THREE.Vector3) => {
 }
 
 // SYSTEMS
-const velocityApplySystem = (entities: World<Omega>) => {
+const velocityApplySystem = (entities: World<ESCEntity>) => {
 	for (const entity of entities.with("SpatialTransforms", "Velocityable")) {
 		entity.SpatialTransforms.position.add(entity.Velocityable.velocity)
 	}
 	return entities
 }
-const velocityFadeSystem = (entities: World<Omega>) => {
+const velocityFadeSystem = (entities: World<ESCEntity>) => {
 	var velocityFading = 0.99
 	for (const entity of entities.with("Velocityable")) {
 		entity.Velocityable.velocity.multiplyScalar(velocityFading)
 	}
 	return entities
 }
-const distanceClampSystem = (entities: World<Omega>) => {
+const distanceClampSystem = (entities: World<ESCEntity>) => {
 	var centerPoint = new THREE.Vector3(0, 0, 0)
 	var radius = 6
 	for (const entity of entities.with("SpatialTransforms", "Velocityable")) {
@@ -66,7 +66,7 @@ const distanceClampSystem = (entities: World<Omega>) => {
 	}
 	return entities
 }
-const pointGravitySystem = (entities: World<Omega>) => {
+const pointGravitySystem = (entities: World<ESCEntity>) => {
 	var gravitationPoint = new THREE.Vector3(0, 0, 0)
 	var minGravityMagnitude = 0.0001
 	var maxGravityMagnitude = 0.009
@@ -85,7 +85,7 @@ const pointGravitySystem = (entities: World<Omega>) => {
 	}
 	return entities
 }
-const keepDistanceFromEachOtherSystem = (entities: World<Omega>) => {
+const keepDistanceFromEachOtherSystem = (entities: World<ESCEntity>) => {
 	var minDistance = 0.1
 	var quered = entities.with("SpatialTransforms", "Velocityable")
 	for (const entity of quered) {
