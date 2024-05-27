@@ -1,7 +1,7 @@
 "use client"
 
-import { r3f } from "./PresistentTunnel"
+import { ThreePresistentTunnel } from "./ThreePresistentTunnel"
 
 export const cThreePresistentTunnel = ({ children }: { children: React.ReactNode }) => {
-	return <r3f.In>{children}</r3f.In>
+	return <ThreePresistentTunnel.In>{children}</ThreePresistentTunnel.In>
 }

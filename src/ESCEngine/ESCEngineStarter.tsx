@@ -5,15 +5,14 @@ import { asteroidWorld, startSystemUpdateLoop } from "./asteroidESCGame"
 import { THREE } from "~/exp"
 import { cThreePresistentView as CThreePresistentView } from "~/components/ThreePresistense/cThreePresistentView"
 import { useFrame } from "@react-three/fiber"
-import { dynamicCommon } from "~/components/dinamicImports/3dModels"
 import createReactAPI from "miniplex-react"
 import { ESCEntity } from "./ESCEntity"
 import { THREEEX } from "~/helpers/THREEEX"
+import { cCommon as CCommon } from "~/components/ThreePresistense/cCommon"
 
 /**
  *
  */
-const Common = dynamicCommon()
 export const AsteroidsECS = createReactAPI(asteroidWorld)
 /**
  *
@@ -74,7 +73,7 @@ export const cAsteroidView = () => {
 		<>
 			<CThreePresistentView isOrbitControlsEnabeled className="relative h-[400px] w-full">
 				{asteroidComponents}
-				<Common color={"#156545"} />
+				<CCommon color={"#156545"} />
 			</CThreePresistentView>
 			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />
 		</>

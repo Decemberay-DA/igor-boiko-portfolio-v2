@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber"
 import { Preload } from "@react-three/drei"
-import { r3f } from "./PresistentTunnel"
+import { ThreePresistentTunnel } from "./ThreePresistentTunnel"
 import * as THREE from "three"
 import React from "react"
 
@@ -11,7 +11,7 @@ import React from "react"
  */
 export const cThreePresistentScene = ({ ...props }) => (
 	<Canvas {...props} onCreated={(state) => (state.gl.toneMapping = THREE.AgXToneMapping)}>
-		<r3f.Out />
+		<ThreePresistentTunnel.Out />
 		<Preload all />
 	</Canvas>
 )
