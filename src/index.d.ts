@@ -1,4 +1,3 @@
-// for shader imports
 declare module "*.vert" {
 	const content: string
 	export default content

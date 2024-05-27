@@ -1,15 +1,15 @@
 import { THREE } from "~/exp"
 
 export type SphereCollider = {
-	radius: () => number
-	bouncing: () => number
+	radius: number
+	bouncing: number
 }
 export type Gravitation = {
-	gravityForce: () => number
-	gravityDistance: () => number
+	gravityForce: number
+	gravityDistance: number
 }
 export type SpatialMass = {
-	mass: () => number
+	mass: number
 }
 export type Velocityable = {
 	velocity: THREE.Vector3
@@ -34,11 +34,6 @@ export type THREESceneRepresentation = {
 export type HTMLSceneRepresentation = {
 	readonly scene: HTMLElement
 }
-export type HTMLScrollTransforming = {
-	effectStart: () => number
-	effectEnd: () => number
-	effectExecuting: (interpolation: number) => void
-}
 
 /**
  * all possible components can be added to this object.
@@ -55,5 +50,4 @@ export type ESCEntity = {
 	SceneIdentificator?: SceneIdentificator
 	THREESceneRepresentation?: THREESceneRepresentation
 	HTMLSceneRepresentation?: HTMLSceneRepresentation
-	HTMLScrollTransforming?: HTMLScrollTransforming
 }
