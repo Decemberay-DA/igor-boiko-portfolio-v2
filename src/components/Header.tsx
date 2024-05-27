@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation"
 
-export const Header = ({ ...rest }: React.ComponentProps<"header">) => (
+export const Header = ({ ...props }: React.ComponentProps<"header">) => (
 	<header
-		{...rest}
+		{...props}
 		className="flex h-16 w-full items-center justify-between bg-[#0a192f] px-4 py-2 text-white sticky top-0 ">
 		<h2 className="text-2xl font-bold z-[9999999999999]">Igor Boiko The Dev V4</h2>
 		<h1

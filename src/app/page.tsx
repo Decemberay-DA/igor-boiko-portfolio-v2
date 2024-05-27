@@ -15,9 +15,12 @@ export default async function HomePage() {
 	)
 }
 
+/**
+ *
+ */
 const _newSection = (sectionName?: string) => (
 	<div id="section" className="h-[500px] w-full flexflex-col">
-		<div className="h-[80%] w-full flex flex-row bg-gray-500">
+		<div className="h-[70%] w-full flex flex-row bg-gray-500">
 			<p className="text-2xl font-bold text-white">{sectionName}</p>
 		</div>
 	</div>
