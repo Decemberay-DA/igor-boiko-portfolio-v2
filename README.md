@@ -2,6 +2,8 @@
 
 ## like plan or something
 
+yo this is such a simple thing, why is it taking that long time to do?
+
 ---
 - [ ] prototype stuff in pixso da
 - [ ] html of base page without modals or other pages
