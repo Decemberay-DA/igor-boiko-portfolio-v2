@@ -6,19 +6,19 @@ import { ESCEntity } from "./ESCEntity"
 /* Create a Miniplex world that holds our entities */
 export const asteroidWorld = new World<ESCEntity>()
 
-const _genPose = () => Math.random() - 0.5
-const _getVector = (range: number) =>
-	new THREE.Vector3(_genPose() * range, _genPose() * range, _genPose() * range)
+const newVal = () => Math.random() - 0.5
+const newVec = (range: number) =>
+	new THREE.Vector3(newVal() * range, newVal() * range, newVal() * range)
 const createSwarm = (ammouns: number = 123) => {
 	for (let i = 0; i < ammouns; i++) {
 		const entity = asteroidWorld.add({})
 		asteroidWorld.addComponent(entity, "SpatialTransforms", {
-			position: _getVector(5),
+			position: newVec(5),
 			rotation: new THREE.Euler(),
 			scale: new THREE.Vector3(1, 1, 1),
 		})
 		asteroidWorld.addComponent(entity, "Velocityable", {
-			velocity: _getVector(0.04),
+			velocity: newVec(0.04),
 		})
 	}
 }

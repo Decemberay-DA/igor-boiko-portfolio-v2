@@ -39,7 +39,7 @@ export type HTMLSceneRepresentation = {
  * all possible components can be added to this object.
  * the ok solution for miniplex.
  *      - i have thoughtcrimed about rust & bevy
- * @note - Omega and ECS engine is only used for the background logick, for HTML logick React is used
+ * @note - Omega and ECS engine is only used for the three scene background logick, for HTML logick React ot smth is used
  */
 export type ESCEntity = {
 	SphereCollider?: SphereCollider

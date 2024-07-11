@@ -14,28 +14,15 @@ import { cCommon as CCommon } from "~/components/ThreePresistense/cCommon"
  *
  */
 export const AsteroidsECS = createReactAPI(asteroidWorld)
+
 /**
  *
  */
-
 export const cESCEngineStarter = () => {
 	"use client"
 	console.log("created jsx element for starting esc engine")
 	startSystemUpdateLoop()
 	return null
-}
-
-export const KillRanbomEntityButton = ({ ...rest }: React.ComponentProps<"button">) => {
-	const killRanbomEntity = () => {
-		const randomEntity =
-			asteroidWorld.entities[Math.floor(Math.random() * asteroidWorld.entities.length)]!
-		asteroidWorld.remove(randomEntity)
-	}
-	return (
-		<button onClick={killRanbomEntity} {...rest}>
-			kill random entity
-		</button>
-	)
 }
 
 type AsteroidProps = {
@@ -63,19 +50,15 @@ export const AsteriodModel = ({ data, ...rest }: AsteroidProps) => {
 }
 
 export const cAsteroidView = () => {
-	"use client"
 	// const asteroidEntities = asteroidWorld.entities
 	const asteroidComponents = useMemo(() => {
 		return asteroidWorld.entities.map((a) => <AsteriodModel key={asteroidWorld.id(a)} data={a} />)
 	}, [asteroidWorld.entities])
 
 	return (
-		<>
-			<CThreePresistentView isOrbitControlsEnabeled className="relative h-[400px] w-full">
-				{asteroidComponents}
-				<CCommon color={"#156545"} />
-			</CThreePresistentView>
-			<KillRanbomEntityButton className="w-full bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded" />
-		</>
+		<CThreePresistentView isOrbitControlsEnabeled className="relative h-[400px] w-full">
+			{asteroidComponents}
+			<CCommon color={"#156545"} />
+		</CThreePresistentView>
 	)
 }
